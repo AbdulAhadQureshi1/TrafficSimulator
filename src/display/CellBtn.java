@@ -1,12 +1,15 @@
 package display;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.*;
 
 public class CellBtn extends JButton {
     private boolean state = false;
     private final int location;
+    private Icon grass = new ImageIcon("src/display/images/grass.png");
+    private Icon roadh = new ImageIcon("src/display/images/roadh.png");
+    private Icon roadv = new ImageIcon("src/display/images/roadv.png");
     public CellBtn(int index){
-        super("Grass");
+        super.setIcon(grass);
         super.addActionListener(e -> {
             this.changeState();
         });
@@ -15,9 +18,22 @@ public class CellBtn extends JButton {
         location = index;
     }
     public void changeState(){
+        Frame f = new Frame();
+        Object[] options = {"Vertical", "Horizontal"};
+        String side = (String)JOptionPane.showInputDialog(f, "Orientation:\n",
+                        "Road Orientation",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        options,
+                        "Vertical");
+
         state = true;
-        super.setText("Road");
-        System.out.print(location);
+        if (side == "Vertical"){
+            super.setIcon(roadv);
+        }
+        else{
+            super.setIcon(roadh);
+        }
     }
     public boolean getbtnState(){
         return state;

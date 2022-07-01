@@ -1,7 +1,4 @@
-import javax.swing.*;
 import java.awt.*;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -42,9 +39,6 @@ public class Main {
         });
 
         //Functionality of Map making buttons
-        Scanner sc = new Scanner(System.in);
-        int rows = sc.nextInt();
-        int cols = sc.nextInt();
 
 
 

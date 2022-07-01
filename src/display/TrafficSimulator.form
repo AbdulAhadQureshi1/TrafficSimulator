@@ -19,6 +19,7 @@
       <xy x="20" y="20" width="940" height="813"/>
     </constraints>
     <properties>
+      <autoscrolls value="true"/>
       <background color="-1"/>
       <enabled value="true"/>
       <foreground color="-16121066"/>
@@ -92,8 +93,7 @@
           <text value="🚗  TRAFFIC SIMULATOR"/>
         </properties>
       </component>
-      <grid id="e7107" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="e7107" binding="map_frame" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -107,6 +107,7 @@
         <border type="line">
           <title-color color="-3092263"/>
         </border>
+<<<<<<< Updated upstream:src/display/TrafficSimulator.form
         <children>
           <grid id="e0d9b" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="5" left="5" bottom="5" right="5"/>
@@ -177,6 +178,9 @@
             </constraints>
           </vspacer>
         </children>
+=======
+        <children/>
+>>>>>>> Stashed changes:src/TrafficSimulator.form
       </grid>
       <grid id="58aba" layout-manager="BorderLayout" hgap="10" vgap="0">
         <constraints>

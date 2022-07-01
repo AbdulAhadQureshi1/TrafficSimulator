@@ -19,7 +19,6 @@
       <xy x="20" y="20" width="940" height="813"/>
     </constraints>
     <properties>
-      <autoscrolls value="true"/>
       <background color="-1"/>
       <enabled value="true"/>
       <foreground color="-16121066"/>
@@ -107,80 +106,11 @@
         <border type="line">
           <title-color color="-3092263"/>
         </border>
-<<<<<<< Updated upstream:src/display/TrafficSimulator.form
         <children>
-          <grid id="e0d9b" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="5" left="5" bottom="5" right="5"/>
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1"/>
-              <foreground color="-16777216"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="59fb7" class="javax.swing.JButton" binding="a️RoadButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <contentAreaFilled value="false"/>
-                  <foreground color="-16777216"/>
-                  <text value="🛣️ Road"/>
-                </properties>
-              </component>
-              <component id="53bde" class="javax.swing.JButton" binding="tunnelButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <contentAreaFilled value="false"/>
-                  <foreground color="-16777216"/>
-                  <text value="Tunnel"/>
-                </properties>
-              </component>
-              <component id="b6e12" class="javax.swing.JButton" binding="bridgeButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <contentAreaFilled value="false"/>
-                  <foreground color="-16777216"/>
-                  <text value="🌉 Bridge"/>
-                </properties>
-              </component>
-              <component id="c871f" class="javax.swing.JButton" binding="roundAboutButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <contentAreaFilled value="false"/>
-                  <foreground color="-16777216"/>
-                  <text value="Round About"/>
-                </properties>
-              </component>
-              <component id="d558a" class="javax.swing.JButton" binding="signalButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <contentAreaFilled value="false"/>
-                  <foreground color="-16777216"/>
-                  <text value="🚦 Signal"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
           <vspacer id="7da5a">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
+            <constraints/>
           </vspacer>
         </children>
-=======
-        <children/>
->>>>>>> Stashed changes:src/TrafficSimulator.form
       </grid>
       <grid id="58aba" layout-manager="BorderLayout" hgap="10" vgap="0">
         <constraints>

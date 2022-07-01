@@ -56,11 +56,14 @@ public class Sql {
     public int newSimulation(int entrySerial,int trafficFlow, int accidents, float efficiency, float avg, int userSerial){
         Date date = new Date();
         try{
+            ResultSet rs = stmt.executeQuery("SELECT Serial FROM Login_Details");
+            while(rs.next())
             return stmt.executeUpdate("INSERT INTO sim_record VALUES (" + entrySerial +","+ trafficFlow + "," + accidents + "," + efficiency + "," + avg + "," + date.toString() +","+ userSerial + ");");
         } catch(SQLException e) {
             e.printStackTrace();
-            return 0;
+
         }
+        return 0;
     }
     public static void main(String[] args){
         Sql db = new Sql();

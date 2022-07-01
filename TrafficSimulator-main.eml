@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/out/test/TrafficSimulator"/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="mysql-connector-java-8.0.29.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/src/database/mysql-connector-java-8.0.29.jar!/"/>
+	</lib>
+	<lib name="jgoodies-common-1.8.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/src/display/jgoodies-common-1.8.0.jar!/"/>
+	</lib>
+	<lib name="jgoodies-forms-1.8.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/src/display/jgoodies-forms-1.8.0.jar!/"/>
+	</lib>
+</component>

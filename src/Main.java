@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
 
@@ -39,6 +40,13 @@ public class Main {
             mainPage.setVisible(true);
             options.setVisible(false);
         });
+
+        //Functionality of Map making buttons
+        Scanner sc = new Scanner(System.in);
+        int rows = sc.nextInt();
+        int cols = sc.nextInt();
+
+
 
     }
 }

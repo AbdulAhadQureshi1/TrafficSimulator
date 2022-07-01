@@ -8,7 +8,7 @@ public class TrafficSimulator extends JFrame{
     private JButton simulateButton;
     private JButton OptionsButton;
     private JLabel mainHeading;
-    private JButton a️RoadButton;
+    private JButton roadButton;
     private JButton tunnelButton;
     private JButton bridgeButton;
     private JButton roundAboutButton;
@@ -30,5 +30,25 @@ public class TrafficSimulator extends JFrame{
 
     public JButton getOptionsButton() {
         return OptionsButton;
+    }
+
+    public JButton getRoadButton() {
+        return roadButton;
+    }
+
+    public JButton getTunnelButton() {
+        return tunnelButton;
+    }
+
+    public JButton getBridgeButton() {
+        return bridgeButton;
+    }
+
+    public JButton getRoundAboutButton() {
+        return roundAboutButton;
+    }
+
+    public JButton getSignalButton() {
+        return signalButton;
     }
 }

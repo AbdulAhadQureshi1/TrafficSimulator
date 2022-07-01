@@ -4,10 +4,10 @@
     <rowspec value="center:d:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:19px:noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="top:41dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="top:28px:noGrow"/>
+    <rowspec value="top:31px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
@@ -119,7 +119,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="59fb7" class="javax.swing.JButton" binding="a️RoadButton" default-binding="true">
+              <component id="59fb7" class="javax.swing.JButton" binding="roadButton">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>

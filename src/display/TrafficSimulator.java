@@ -13,6 +13,7 @@ public class TrafficSimulator extends JFrame{
     private JLabel mainHeading;
 
     private JPanel map_frame;
+    private CellBtn btns[] = new CellBtn[9];
 
     public TrafficSimulator(int width, int height) {
 
@@ -26,15 +27,9 @@ public class TrafficSimulator extends JFrame{
         map.setLayout(new GridLayout(2, 2));
         map_frame.add(map);
         for (int i = 0; i < 9; i++) {
-
-            JButton map_tile = new JButton("Grass");
-            map_tile.setBounds(0, 0, 100, 100);
-            map_tile.setPreferredSize(new Dimension(100, 100));
-            map_tile.addActionListener(e -> {
-                System.out.println("You added a road");
-            });
-            map.add(map_tile);
-
+            CellBtn map_tile = new CellBtn(i);
+            btns[i] = map_tile;
+            map.add(btns[i]);
         }
 
     }

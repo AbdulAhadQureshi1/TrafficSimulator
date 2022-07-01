@@ -13,7 +13,7 @@ public class TrafficSimulator extends JFrame{
     private JLabel mainHeading;
 
     private JPanel map_frame;
-    private CellBtn btns[] = new CellBtn[9];
+    private CellBtn btns[] = new CellBtn[200];
 
     public TrafficSimulator(int width, int height) {
 
@@ -23,13 +23,21 @@ public class TrafficSimulator extends JFrame{
         this.setContentPane(mainPanel);
 
         JPanel map = new JPanel();
-        map.setBounds(0, 0, 200, 200);
-        map.setLayout(new GridLayout(2, 2));
+        map_frame.setLayout(null);
+        map.setBounds(0, 0, 600, 300);
+        map.setLayout(new GridBagLayout());
+        map.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         map_frame.add(map);
-        for (int i = 0; i < 9; i++) {
-            CellBtn map_tile = new CellBtn(i);
-            btns[i] = map_tile;
-            map.add(btns[i]);
+        GridBagConstraints c = new GridBagConstraints();
+        for (int i = 0; i < 10; i++) {
+            for(int j = 0; j < 20 ;j++) {
+                c.ipady = 0;
+                c.gridx = j;
+                c.gridy = i;
+                CellBtn map_tile = new CellBtn(i,j);
+                btns[i] = map_tile;
+                map.add(btns[i], c);
+            }
         }
 
     }

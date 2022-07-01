@@ -92,7 +92,7 @@
           <text value="🚗  TRAFFIC SIMULATOR"/>
         </properties>
       </component>
-      <grid id="e7107" binding="map_frame" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+      <grid id="e7107" binding="map_frame" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -100,17 +100,13 @@
         <properties>
           <background color="-2763307"/>
           <foreground color="-16777216"/>
-          <minimumSize width="200" height="500"/>
+          <minimumSize width="600" height="300"/>
           <preferredSize width="600" height="300"/>
         </properties>
         <border type="line">
           <title-color color="-3092263"/>
         </border>
-        <children>
-          <vspacer id="7da5a">
-            <constraints/>
-          </vspacer>
-        </children>
+        <children/>
       </grid>
       <grid id="58aba" layout-manager="BorderLayout" hgap="10" vgap="0">
         <constraints>

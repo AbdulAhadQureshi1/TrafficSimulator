@@ -3,8 +3,8 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="FormLayout">
     <rowspec value="center:d:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:19px:noGrow"/>
-    <rowspec value="top:41dlu:noGrow"/>
+    <rowspec value="center:61px:noGrow"/>
+    <rowspec value="top:7dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="top:31px:noGrow"/>
@@ -16,7 +16,7 @@
     <rowspec value="center:max(d;4px):noGrow"/>
     <colspec value="fill:d:grow"/>
     <constraints>
-      <xy x="20" y="20" width="940" height="813"/>
+      <xy x="20" y="20" width="940" height="838"/>
     </constraints>
     <properties>
       <background color="-1"/>

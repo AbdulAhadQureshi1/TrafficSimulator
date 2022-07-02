@@ -1,27 +1,38 @@
 package display;
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+
 
 public class CellBtn extends JButton {
-    private boolean state = false;
+
     private final int yaxis;
     private final int xaxis;
     private String currentState = "grass";
-    private Icon grass = new ImageIcon("src/display/images/grass.png");
-    private Icon roadh = new ImageIcon("src/display/images/roadh.png");
-    private Icon roadv = new ImageIcon("src/display/images/roadv.png");
+    private final Icon grass = new ImageIcon("src/display/images/grass.png");
+    private final Icon roadh = new ImageIcon("src/display/images/roadh.png");
+    private final Icon roadv = new ImageIcon("src/display/images/roadv.png");
+    private HashMap<String, String> tilesInfo = TrafficSimulator.tiles_info;
     public CellBtn(int x, int y){
 
         // these are values every btn will by default have
         super.setIcon(grass);
         super.addActionListener(e -> {
-            if (!this.state) {
+            if (this.getCurrentState().equals("grass")) {
                 this.changeState();
-                System.out.println(this.getCo());
+                for (int i:
+                        this.getCo()) {
+                    System.out.print(i + " ");
+                    System.out.println(tilesInfo);
+                }
+                System.out.println();
             }
             else {
                 this.revertState();
-                System.out.println(this.getCo());
+                for (int i:
+                        this.getCo()) {
+                    System.out.println(i+ " ");
+                }
             }
 
         });
@@ -31,6 +42,7 @@ public class CellBtn extends JButton {
         yaxis = y;
     }
     public void changeState(){
+
         Frame f = new Frame();
         Object[] options = {"Vertical", "Horizontal"};
         String side = (String)JOptionPane.showInputDialog(f, "Orientation:\n",
@@ -40,16 +52,18 @@ public class CellBtn extends JButton {
                         options,
                         "Vertical");
 
+        // try-catch because cancelling gives an error, does not crash the program but still shows in the terminal
+        try {
+            if (side.equals("Vertical")) {
+                super.setIcon(roadv);
+                setCurrentState("vertical");
+            } else if (side.equals("Horizontal")) {
+                super.setIcon(roadh);
+                setCurrentState("horizontal");
+            }
+        }catch (Exception e) {
 
-        if (side == "Vertical"){
-            super.setIcon(roadv);
-            state = true;
         }
-        else if (side == "Horizontal"){
-            super.setIcon(roadh);
-            state = true;
-        } else {}
-
     }
 
     public void revertState() {
@@ -60,12 +74,9 @@ public class CellBtn extends JButton {
                 JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
             super.setIcon(grass);
-            state = false;
+            setCurrentState("grass");
         }
 
-    }
-    public boolean getbtnState(){
-        return state;
     }
     public int[] getCo(){
             int[] coordinate  = {xaxis,yaxis};

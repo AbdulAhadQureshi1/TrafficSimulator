@@ -5,6 +5,8 @@ import display.OptionsMenu;
 import java.awt.*;
 
 public class Main {
+
+
     public static void main(String[] args) {
 
         // getting the dimensions of the device

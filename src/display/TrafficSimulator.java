@@ -2,6 +2,10 @@ package display;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import javax.swing.Timer;
 
 public class TrafficSimulator extends JFrame{
     private JPanel mainPanel;
@@ -14,7 +18,7 @@ public class TrafficSimulator extends JFrame{
 
     private JPanel map_frame;
     private CellBtn btns[] = new CellBtn[200];
-
+    public static HashMap<String, String> tiles_info = new HashMap<>();
     public TrafficSimulator(int width, int height) {
 
         this.setTitle("Welcome");
@@ -22,12 +26,19 @@ public class TrafficSimulator extends JFrame{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
 
+        // creating infinite loop that runs in background to check the junctions
+        Timer timer = new Timer(1000/60,new JunctionCheck());
+        timer.start();
+
+        // map panel
         JPanel map = new JPanel();
         map_frame.setLayout(null);
         map.setBounds(0, 0, 600, 300);
         map.setLayout(new GridBagLayout());
         map.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         map_frame.add(map);
+
+        // map buttons
         GridBagConstraints c = new GridBagConstraints();
         for (int i = 0; i < 10; i++) {
             for(int j = 0; j < 20 ;j++) {
@@ -37,9 +48,11 @@ public class TrafficSimulator extends JFrame{
                 CellBtn map_tile = new CellBtn(i,j);
                 btns[i] = map_tile;
                 map.add(btns[i], c);
+
+                tiles_info.put(i + " " + j, map_tile.getCurrentState());
             }
         }
-
+        System.out.println(tiles_info);
     }
     public JButton getSimulateButton() {
         return simulateButton;

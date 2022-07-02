@@ -20,19 +20,11 @@ public class CellBtn extends JButton {
         super.addActionListener(e -> {
             if (this.getCurrentState().equals("grass")) {
                 this.changeState();
-                for (int i:
-                        this.getCo()) {
-                    System.out.print(i + " ");
-                    System.out.println(tilesInfo);
-                }
-                System.out.println();
+                System.out.println(tilesInfo);
             }
             else {
                 this.revertState();
-                for (int i:
-                        this.getCo()) {
-                    System.out.println(i+ " ");
-                }
+
             }
 
         });
@@ -61,9 +53,9 @@ public class CellBtn extends JButton {
                 super.setIcon(roadh);
                 setCurrentState("horizontal");
             }
-        }catch (Exception e) {
+        }catch (Exception e) {}
 
-        }
+        tilesInfo.put(this.getCo(), this.currentState);
     }
 
     public void revertState() {
@@ -78,9 +70,9 @@ public class CellBtn extends JButton {
         }
 
     }
-    public int[] getCo(){
+    public String getCo(){
             int[] coordinate  = {xaxis,yaxis};
-            return coordinate;
+            return xaxis + " " + yaxis;
         }
 
     public String getCurrentState() {

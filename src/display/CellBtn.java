@@ -12,7 +12,7 @@ public class CellBtn extends JButton {
     private final Icon grass = new ImageIcon("src/display/images/grass.png");
     private final Icon roadh = new ImageIcon("src/display/images/roadh.png");
     private final Icon roadv = new ImageIcon("src/display/images/roadv.png");
-    private HashMap<String, String> tilesInfo = TrafficSimulator.tiles_info;
+    public static HashMap<String, String> tilesInfo = TrafficSimulator.tiles_info;
     public CellBtn(int x, int y){
 
         // these are values every btn will by default have
@@ -20,11 +20,9 @@ public class CellBtn extends JButton {
         super.addActionListener(e -> {
             if (this.getCurrentState().equals("grass")) {
                 this.changeState();
-                System.out.println(tilesInfo);
             }
             else {
                 this.revertState();
-
             }
 
         });
@@ -82,4 +80,5 @@ public class CellBtn extends JButton {
     public void setCurrentState(String currentState) {
         this.currentState = currentState;
     }
+
 }

@@ -17,7 +17,9 @@ public class TrafficSimulator extends JFrame{
     private JLabel mainHeading;
 
     private JPanel map_frame;
-    private CellBtn btns[] = new CellBtn[200];
+    private static CellBtn btns[][] = new CellBtn[10][20];
+
+    //must be static because it doesn't need object to be initialized.
     public static HashMap<String, String> tiles_info = new HashMap<>();
     public TrafficSimulator(int width, int height) {
 
@@ -40,19 +42,20 @@ public class TrafficSimulator extends JFrame{
 
         // map buttons
         GridBagConstraints c = new GridBagConstraints();
+
         for (int i = 0; i < 10; i++) {
             for(int j = 0; j < 20 ;j++) {
                 c.ipady = 0;
                 c.gridx = j;
                 c.gridy = i;
                 CellBtn map_tile = new CellBtn(i,j);
-                btns[i] = map_tile;
-                map.add(btns[i], c);
+                btns[i][j] = map_tile;
+                map.add(btns[i][j], c);
 
                 tiles_info.put(i + " " + j, map_tile.getCurrentState());
             }
         }
-        System.out.println(tiles_info);
+
     }
     public JButton getSimulateButton() {
         return simulateButton;
@@ -60,5 +63,9 @@ public class TrafficSimulator extends JFrame{
 
     public JButton getOptionsButton() {
         return OptionsButton;
+    }
+
+    public static CellBtn[][] getBtns(){
+        return btns;
     }
 }

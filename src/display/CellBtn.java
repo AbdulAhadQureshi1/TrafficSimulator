@@ -69,7 +69,6 @@ public class CellBtn extends JButton {
 
     }
     public String getCo(){
-            int[] coordinate  = {xaxis,yaxis};
             return xaxis + " " + yaxis;
         }
 

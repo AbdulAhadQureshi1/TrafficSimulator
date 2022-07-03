@@ -21,28 +21,33 @@ public class Sql {
     public int newUser(String username, String password) {
         int passhash = password.hashCode();
         try {
-            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + " ;");
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + ";");
             while (rs.next()) {
                 int rowCount = Integer.parseInt(rs.getString("COUNT(*)"));
                 if (rowCount != 0) {
-                    return 2;
+                    return -1;
                 }
             }
-            stmt.executeUpdate("INSERT INTO Login_Details (Serial, UserName, Password) " + "VALUES ( " + 000 + ", '" + username + "', " + passhash + " );");
-            return 0;
+            rs = stmt.executeQuery("SELECT MAX(Serial) FROM Login_Details;");
+            int serial = 1;
+            while (rs.next()) {
+                serial += rs.getInt("Max(Serial)");
+            }
+            stmt.executeUpdate("INSERT INTO Login_Details (Serial, UserName, Password) " + "VALUES ( " + serial + ", '" + username + "', " + passhash + " );");
+            return serial;
         } catch (SQLException e) {
             e.printStackTrace();
-            return 1;
+            return -1;
         }
     }
     public int authetication(String username, String password){
         int passhash = password.hashCode();
         try{
-            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + ");");
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(SERIAL) FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + ";");
             while(rs.next()) {
-                int rowCount = Integer.parseInt(rs.getString("COUNT(*)"));
+                int rowCount = Integer.parseInt(rs.getString("COUNT(SERIAL)"));
                 if (rowCount != 0) {
-                    rs = stmt.executeQuery("SELECT Serial FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + ");");
+                    rs = stmt.executeQuery("SELECT Serial FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + ";");
                     while (rs.next()) {
                         return rs.getInt("Serial");
                     }
@@ -65,8 +70,18 @@ public class Sql {
         }
         return 0;
     }
+    public int newSimulation(int userSerial){
+        try{
+            ResultSet rs = stmt.executeQuery("SELECT * FROM sim_record WHERE UserSerial =" + userSerial + ";");
+            return 1;
+        } catch(SQLException e) {
+            e.printStackTrace();
+
+        }
+        return 0;
+    }
     public static void main(String[] args){
         Sql db = new Sql();
-        System.out.println(db.newUser("Arz","bbg"));
+        System.out.println(db.authetication("Arz","bbg"));
     }
 }

@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class JunctionCheck implements ActionListener{
 
     private final Icon junctionImg = new ImageIcon("src/display/images/crossroad.png");
-    private CellBtn[][] btns = TrafficSimulator.getBtns();
+    private final CellBtn[][] btns = TrafficSimulator.getBtns();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -21,10 +21,13 @@ public class JunctionCheck implements ActionListener{
                 try {
                     if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
                         btns[i][j].setIcon(junctionImg);
+                        tilesInfo.put(btns[i][j].getCo(), "junction");
+                        break;
                     }
                 }catch (Exception ignored) {}
 
             }
         }
+
     }
 }

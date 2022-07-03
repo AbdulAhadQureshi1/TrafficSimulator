@@ -61,22 +61,29 @@ public class CellBtn extends JButton {
                 options,
                 "Vertical");
 
-        // try-catch because cancelling gives an error, does not crash the program but still shows in the terminal
+        // try-catch because cancelling gives an error, does not crash the program but still shows error in the terminal
         try {
 
-            if (side.equals("Vertical")) {
-                super.setIcon(roadv);
-                setCurrentState("vertical");
-            } else if (side.equals("Horizontal")) {
-                super.setIcon(roadh);
-                setCurrentState("horizontal");
-            } else if (side.equals("Source")) {
-                super.setIcon(source);
-                setCurrentState("source");
-            } else if (side.equals("Sink")) {
-                super.setIcon(sink);
-                setCurrentState("sink");
+            switch (side) {
+                case "Vertical" -> {
+                    super.setIcon(roadv);
+                    setCurrentState("vertical");
+                }
+                case "Horizontal" -> {
+                    super.setIcon(roadh);
+                    setCurrentState("horizontal");
+                }
+                case "Source" -> {
+                    super.setIcon(source);
+                    setCurrentState("source");
+                }
+                case "Sink" -> {
+                    super.setIcon(sink);
+                    setCurrentState("sink");
+                }
             }
+
+
 
         }catch (Exception ignored) {}
 
@@ -90,8 +97,8 @@ public class CellBtn extends JButton {
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
-            super.setIcon(grass);
             setCurrentState("grass");
+            super.setIcon(grass);
         }
 
     }

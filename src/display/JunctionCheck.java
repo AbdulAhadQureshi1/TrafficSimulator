@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class JunctionCheck implements ActionListener{
 
-    private final Icon junctionImg = new ImageIcon("src/display/images/junction.png");
+    private final Icon junctionImg = new ImageIcon("src/display/images/crossroad.png");
     private CellBtn[][] btns = TrafficSimulator.getBtns();
 
     @Override
@@ -16,7 +16,6 @@ public class JunctionCheck implements ActionListener{
 
         for(int i=0; i<10; i++ ) {
             for(int j=0; j<20; j++) {
-
 
                 // checking Junctions
                 try {

@@ -2,9 +2,7 @@ package display;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Hashtable;
 import javax.swing.Timer;
 
 public class TrafficSimulator extends JFrame{

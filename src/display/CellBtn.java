@@ -10,8 +10,12 @@ public class CellBtn extends JButton {
     private final int xaxis;
     private String currentState = "grass";
     private final Icon grass = new ImageIcon("src/display/images/grass.png");
-    private final Icon roadh = new ImageIcon("src/display/images/roadh.png");
-    private final Icon roadv = new ImageIcon("src/display/images/roadv.png");
+    private final Icon roadh = new ImageIcon("src/display/images/roadHorizontal.png");
+    private final Icon roadv = new ImageIcon("src/display/images/roadVertical.png");
+
+    private final Icon source = new ImageIcon("src/display/images/traffic-jam.png");
+
+    private final Icon sink = new ImageIcon("src/display/images/placeholder.png");
     public static HashMap<String, String> tilesInfo = TrafficSimulator.tiles_info;
     public CellBtn(int x, int y){
 
@@ -34,24 +38,47 @@ public class CellBtn extends JButton {
     public void changeState(){
 
         Frame f = new Frame();
-        Object[] options = {"Vertical", "Horizontal"};
-        String side = (String)JOptionPane.showInputDialog(f, "Orientation:\n",
-                        "Road Orientation",
-                        JOptionPane.PLAIN_MESSAGE,
-                        null,
-                        options,
-                        "Vertical");
+        String side;
+
+        String borderCheck = this.getCo();
+
+        Object[] options;
+        // catching indexOutofBound exception for buttons on single digit column numbers
+        try {
+            if (borderCheck.charAt(0) == '0' || borderCheck.charAt(2) == '0' || borderCheck.charAt(0) == '9' || borderCheck.charAt(3) == '9') {
+                options = new Object[]{"Vertical", "Horizontal", "Source", "Sink"};
+            } else {
+                options = new Object[]{"Vertical", "Horizontal"};
+            }
+        } catch(IndexOutOfBoundsException ignored) {
+            options  = new Object[]{"Vertical", "Horizontal"};
+        }
+
+        side = (String)JOptionPane.showInputDialog(f, "Orientation:\n",
+                "Road Orientation",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                options,
+                "Vertical");
 
         // try-catch because cancelling gives an error, does not crash the program but still shows in the terminal
         try {
+
             if (side.equals("Vertical")) {
                 super.setIcon(roadv);
                 setCurrentState("vertical");
             } else if (side.equals("Horizontal")) {
                 super.setIcon(roadh);
                 setCurrentState("horizontal");
+            } else if (side.equals("Source")) {
+                super.setIcon(source);
+                setCurrentState("source");
+            } else if (side.equals("Sink")) {
+                super.setIcon(sink);
+                setCurrentState("sink");
             }
-        }catch (Exception e) {}
+
+        }catch (Exception ignored) {}
 
         tilesInfo.put(this.getCo(), this.currentState);
     }

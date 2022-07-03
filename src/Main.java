@@ -28,7 +28,7 @@ public class Main {
             Sql s = new Sql();
             String[] credentials = login.inputs();
             int serial = s.authetication(credentials[0],credentials[1]);
-            if (credentials[0].startsWith("Admin123") || serial != -1 ){
+            if (serial != -1 ){
                 login.dispose();
                 start.setVisible(true);
             }
@@ -53,7 +53,7 @@ public class Main {
             }
             else {
                 register.dispose();
-                start.setVisible(true);
+                login.setVisible(true);
             }
         });
         start.getOpenButton().addActionListener(e -> {

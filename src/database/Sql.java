@@ -3,9 +3,9 @@ import java.sql.*;
 import java.lang.Integer;
 import java.util.Date;
 public class Sql {
-    private final String DB_URL = "jdbc:mysql://localhost/trafficsim";
-    private final String USER = "root";
-    private final String PASS = "oopproject";
+    private final String DB_URL = "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6502557";
+    private final String USER = "sql6502557";
+    private final String PASS = "iqCY1wSClz";
     public Connection conn;
     public Statement stmt;
 

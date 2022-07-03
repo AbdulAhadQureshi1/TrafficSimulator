@@ -112,7 +112,7 @@
           <foreground color="-16777216"/>
           <opaque value="false"/>
           <preferredSize width="180" height="50"/>
-          <text value="Register"/>
+          <text value="Back To Login"/>
         </properties>
       </component>
       <component id="9b0e2" class="javax.swing.JTextField" binding="passwordTextField">

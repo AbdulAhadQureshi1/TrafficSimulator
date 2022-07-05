@@ -100,6 +100,7 @@ public class CellBtn extends JButton {
             setCurrentState("grass");
             super.setIcon(grass);
         }
+        tilesInfo.put(this.getCo(), this.currentState);
 
     }
     public String getCo(){

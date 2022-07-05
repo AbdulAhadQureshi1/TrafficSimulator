@@ -40,7 +40,7 @@ public class Sql {
             return -1;
         }
     }
-    public int authetication(String username, String password){
+    public int auth(String username, String password){
         int passhash = password.hashCode();
         try{
             ResultSet rs = stmt.executeQuery("SELECT COUNT(SERIAL) FROM Login_Details WHERE UserName = '" + username + "' AND Password = " + passhash + ";");
@@ -70,7 +70,7 @@ public class Sql {
         }
         return 0;
     }
-    public int newSimulation(int userSerial){
+    public int LoadSimulation(int userSerial){
         try{
             ResultSet rs = stmt.executeQuery("SELECT * FROM sim_record WHERE UserSerial =" + userSerial + ";");
             return 1;
@@ -82,6 +82,6 @@ public class Sql {
     }
     public static void main(String[] args){
         Sql db = new Sql();
-        System.out.println(db.authetication("Arz","bbg"));
+        System.out.println(db.auth("Arz","bbg"));
     }
 }

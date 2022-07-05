@@ -27,7 +27,7 @@ public class Main {
         login.getUser().addActionListener(e -> {
             Sql s = new Sql();
             String[] credentials = login.inputs();
-            int serial = s.authetication(credentials[0],credentials[1]);
+            int serial = s.auth(credentials[0],credentials[1]);
             if (serial != -1 ){
                 login.dispose();
                 start.setVisible(true);

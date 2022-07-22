@@ -63,6 +63,17 @@ public class Main {
         mainPage.getSimulateButton().addActionListener(e -> {
             mainPage.setVisible(false);
             simulationResults.setVisible(true);
+            int[] data = RouteAlgo.getRoute();
+            simulationResults.Text(data);
+            //debug
+            RouteAlgo.getRoute();
+            for(int x =0;x<10;x++) {
+                for (int y = 0; y < 20; y++) {
+                    System.out.print(RouteAlgo.tiles_info[x][y]+" ");
+
+                }
+                System.out.println();
+            }
         });
         mainPage.getOptionsButton().addActionListener(e -> {
             mainPage.setVisible(false);

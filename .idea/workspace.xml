@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0e9949f-1fcc-47c2-99b4-65f2daefe208" name="Changes" comment="" />
+    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="Made changes to Junction added turns and tjunctions">
+      <change afterPath="$PROJECT_DIR$/src/display/ShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/CellBtn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/CellBtn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/JunctionCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/JunctionCheck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ResultsPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ResultsPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/TrafficSimulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/TrafficSimulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/CellBtn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/CellBtn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/JunctionCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/JunctionCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/ResultsPage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/ResultsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/TrafficSimulator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,14 +46,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "323",
     "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "C:/Users/abdul/IdeaProjects/TrafficSimulator",
+    "last_opened_file_path": "C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.excludes"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -74,13 +92,28 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d0e9949f-1fcc-47c2-99b4-65f2daefe208" name="Changes" comment="" />
+      <changelist id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="" />
       <created>1654365874989</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654365874989</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mades changes to Junction added turns and tjunctions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mades changes to Junction added turns and tjunctions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

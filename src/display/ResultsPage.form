@@ -2,12 +2,16 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="display.ResultsPage">
   <grid id="27dc6" binding="resultsMainPage" layout-manager="FormLayout">
     <rowspec value="center:344px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:d:grow"/>
     <rowspec value="center:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="fill:d:grow"/>
+    <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:d:grow"/>
     <constraints>
       <xy x="20" y="20" width="924" height="582"/>
@@ -20,7 +24,7 @@
     <children>
       <component id="c1180" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
           <forms top="30" left="0" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -30,17 +34,10 @@
           <text value="🚗  SIMULATION RESULTS"/>
         </properties>
       </component>
-      <grid id="afa39" layout-manager="FormLayout">
+      <grid id="afa39" binding="VLabels" layout-manager="FormLayout">
         <rowspec value="center:d:grow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow(1.1)"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):grow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:max(d;4px):grow"/>
-        <colspec value="fill:d:grow"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -48,53 +45,11 @@
           <background color="-1"/>
         </properties>
         <border type="none"/>
-        <children>
-          <component id="f4bba" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-horz="false"/>
-            </constraints>
-            <properties>
-              <background color="-1"/>
-              <focusable value="true"/>
-              <font name="Century Gothic" size="18" style="0"/>
-              <foreground color="-16777216"/>
-              <text value="Number of Crashes = "/>
-            </properties>
-          </component>
-          <component id="9c8b3" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-horz="false"/>
-            </constraints>
-            <properties>
-              <autoscrolls value="false"/>
-              <background color="-1"/>
-              <focusable value="true"/>
-              <font name="Century Gothic" size="18" style="0"/>
-              <foreground color="-16777216"/>
-              <text value="Average Time         = "/>
-            </properties>
-          </component>
-          <component id="a1f7" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <forms defaultalign-horz="false"/>
-            </constraints>
-            <properties>
-              <autoscrolls value="false"/>
-              <background color="-1"/>
-              <focusable value="true"/>
-              <font name="Century Gothic" size="18" style="0"/>
-              <foreground color="-16777216"/>
-              <text value="Effeciency               = "/>
-            </properties>
-          </component>
-        </children>
+        <children/>
       </grid>
       <component id="3234f" class="javax.swing.JButton" binding="backToMain">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
@@ -107,6 +62,24 @@
           <text value="🔙 Back To Main Page"/>
         </properties>
       </component>
+      <component id="6a966" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <background color="-655363"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <hspacer id="64274">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+      </hspacer>
     </children>
   </grid>
 </form>

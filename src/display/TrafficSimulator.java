@@ -16,9 +16,6 @@ public class TrafficSimulator extends JFrame{
 
     private JPanel map_frame;
     private static CellBtn btns[][] = new CellBtn[10][20];
-
-    //must be static because it doesn't need object to be initialized.
-    public static HashMap<String, String> tiles_info = new HashMap<>();
     public TrafficSimulator(int width, int height) {
 
         this.setTitle("Welcome");
@@ -50,7 +47,7 @@ public class TrafficSimulator extends JFrame{
                 btns[i][j] = map_tile;
                 map.add(btns[i][j], c);
 
-                tiles_info.put(i + " " + j, map_tile.getCurrentState());
+                RouteAlgo.tiles_info[i][j] =  map_tile.getCurrentState();
             }
         }
 

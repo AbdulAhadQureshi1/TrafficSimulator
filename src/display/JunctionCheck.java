@@ -19,68 +19,66 @@ public class JunctionCheck implements ActionListener{
     private final CellBtn[][] btns = TrafficSimulator.getBtns();
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        HashMap<String, String> tilesInfo = CellBtn.tilesInfo;
-
+    public void actionPerformed(ActionEvent e) {;
         for(int i=0; i<10; i++ ) {
             for(int j=0; j<20; j++) {
 
                 // checking Junctions
                 try {
                     // junction 4way
-                    if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
+                    if (RouteAlgo.tiles_info[i][j+1] == "-" && RouteAlgo.tiles_info[i][j-1] == "-" && RouteAlgo.tiles_info[i+1][j] == "|" && RouteAlgo.tiles_info[i-1][j] == "|") {
                         btns[i][j].setIcon(junctionImg);
-                        tilesInfo.put(btns[i][j].getCo(), "junction");
+                        RouteAlgo.tiles_info[i][j] = "+";
+
                     }
                     // t junction downwards
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("grass"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "-" && RouteAlgo.tiles_info[i][j-1] == "-" && RouteAlgo.tiles_info[i+1][j] == "|" && RouteAlgo.tiles_info[i-1][j] == "x") {
                             btns[i][j].setIcon(tdownImg);
-                            tilesInfo.put(btns[i][j].getCo(), "tdown");
+                        RouteAlgo.tiles_info[i][j] = "T";
 
                     }
                     // t junction upwards
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("grass") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "-" && RouteAlgo.tiles_info[i][j-1] == "-" && RouteAlgo.tiles_info[i+1][j] == "x" && RouteAlgo.tiles_info[i-1][j] == "|") {
                         btns[i][j].setIcon(tupImg);
-                        tilesInfo.put(btns[i][j].getCo(), "tup");
+                        RouteAlgo.tiles_info[i][j] = "^";
 
                     }
                     //t junction right
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("grass")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "-" && RouteAlgo.tiles_info[i][j-1] == "x" && RouteAlgo.tiles_info[i+1][j] == "|" && RouteAlgo.tiles_info[i-1][j] == "|") {
                         btns[i][j].setIcon(trightImg);
-                        tilesInfo.put(btns[i][j].getCo(), "tright");
+                        RouteAlgo.tiles_info[i][j] = "}";
 
                     }
                     //t junction left
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("grass") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "x" && RouteAlgo.tiles_info[i][j-1] == "-" && RouteAlgo.tiles_info[i+1][j] == "|" && RouteAlgo.tiles_info[i-1][j] == "|") {
                         btns[i][j].setIcon(tleftImg);
-                        tilesInfo.put(btns[i][j].getCo(), "tleft");
+                        RouteAlgo.tiles_info[i][j] = "{";
 
                     }
                     //up left turn
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("grass") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("grass") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "x" && RouteAlgo.tiles_info[i][j-1] == "-" && RouteAlgo.tiles_info[i+1][j] == "x" && RouteAlgo.tiles_info[i-1][j] == "|") {
                         btns[i][j].setIcon(uptoleftImg);
-                        tilesInfo.put(btns[i][j].getCo(), "upleft");
+                        RouteAlgo.tiles_info[i][j] = "J";
 
                     }
                     // up right turn
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("grass")) && (tilesInfo.get((i+1) + " " + j).equals("grass") && tilesInfo.get((i-1) + " " + j).equals("vertical"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "-" && RouteAlgo.tiles_info[i][j-1] == "x" && RouteAlgo.tiles_info[i+1][j] == "x" && RouteAlgo.tiles_info[i-1][j] == "|") {
                         btns[i][j].setIcon(uptorightImg);
-                        tilesInfo.put(btns[i][j].getCo(), "upright");
+                        RouteAlgo.tiles_info[i][j] = "L";
 
                     }
                     //down left turn
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("grass") && tilesInfo.get(i + " " + (j-1) ).equals("horizontal")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("grass"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "x" && RouteAlgo.tiles_info[i][j-1] == "-" && RouteAlgo.tiles_info[i+1][j] == "|" && RouteAlgo.tiles_info[i-1][j] == "x") {
                         btns[i][j].setIcon(lefttodownImg);
-                        tilesInfo.put(btns[i][j].getCo(), "leftdown");
+                        RouteAlgo.tiles_info[i][j] = "1";
 
                     }
                     // down right turn
-                    else if ((tilesInfo.get(i + " " + (j+1) ).equals("horizontal") && tilesInfo.get(i + " " + (j-1) ).equals("grass")) && (tilesInfo.get((i+1) + " " + j).equals("vertical") && tilesInfo.get((i-1) + " " + j).equals("grass"))) {
+                    else if (RouteAlgo.tiles_info[i][j+1] == "-" && RouteAlgo.tiles_info[i][j-1] == "x" && RouteAlgo.tiles_info[i+1][j] == "|" && RouteAlgo.tiles_info[i-1][j] == "x") {
                         btns[i][j].setIcon(righttodownImg);
-                        tilesInfo.put(btns[i][j].getCo(), "rightdown");
+                        RouteAlgo.tiles_info[i][j] = "F";
                     }
                 }catch (Exception ignored) {}
-
             }
         }
 

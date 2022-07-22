@@ -8,7 +8,7 @@ public class CellBtn extends JButton {
 
     private final int yaxis;
     private final int xaxis;
-    private String currentState = "grass";
+    private String currentState = "x";
     private final Icon grass = new ImageIcon("src/display/images/grass.png");
     private final Icon roadh = new ImageIcon("src/display/images/roadHorizontal.png");
     private final Icon roadv = new ImageIcon("src/display/images/roadVertical.png");
@@ -16,13 +16,12 @@ public class CellBtn extends JButton {
     private final Icon source = new ImageIcon("src/display/images/traffic-jam.png");
 
     private final Icon sink = new ImageIcon("src/display/images/placeholder.png");
-    public static HashMap<String, String> tilesInfo = TrafficSimulator.tiles_info;
     public CellBtn(int x, int y){
 
         // these are values every btn will by default have
         super.setIcon(grass);
         super.addActionListener(e -> {
-            if (this.getCurrentState().equals("grass")) {
+            if (this.getCurrentState().equals("x")) {
                 this.changeState();
             }
             else {
@@ -40,12 +39,12 @@ public class CellBtn extends JButton {
         Frame f = new Frame();
         String side;
 
-        String borderCheck = this.getCo();
+        int[] borderCheck = this.getCo();
 
         Object[] options;
         // catching indexOutofBound exception for buttons on single digit column numbers
         try {
-            if (borderCheck.charAt(0) == '0' || borderCheck.charAt(2) == '0' || borderCheck.charAt(0) == '9' || borderCheck.charAt(3) == '9') {
+            if (borderCheck[0] == 0 || borderCheck[1] == 0 || borderCheck[0] == 9 || borderCheck[1] == 9) {
                 options = new Object[]{"Vertical", "Horizontal", "Source", "Sink"};
             } else {
                 options = new Object[]{"Vertical", "Horizontal"};
@@ -67,19 +66,23 @@ public class CellBtn extends JButton {
             switch (side) {
                 case "Vertical" -> {
                     super.setIcon(roadv);
-                    setCurrentState("vertical");
+                    setCurrentState("|");
+                    RouteAlgo.roads++;
                 }
                 case "Horizontal" -> {
                     super.setIcon(roadh);
-                    setCurrentState("horizontal");
+                    setCurrentState("-");
+                    RouteAlgo.roads++;
                 }
                 case "Source" -> {
                     super.setIcon(source);
                     setCurrentState("source");
+                    RouteAlgo.source++;
                 }
                 case "Sink" -> {
                     super.setIcon(sink);
                     setCurrentState("sink");
+                    RouteAlgo.sink++;
                 }
             }
 
@@ -87,7 +90,8 @@ public class CellBtn extends JButton {
 
         }catch (Exception ignored) {}
 
-        tilesInfo.put(this.getCo(), this.currentState);
+        int[] index = this.getCo();
+        RouteAlgo.tiles_info[index[0]][index[1]] = this.currentState;
     }
 
     public void revertState() {
@@ -97,14 +101,16 @@ public class CellBtn extends JButton {
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
-            setCurrentState("grass");
+            setCurrentState("x");
             super.setIcon(grass);
+            RouteAlgo.roads--;
         }
-        tilesInfo.put(this.getCo(), this.currentState);
-
+        int[] index = this.getCo();
+        RouteAlgo.tiles_info[index[0]][index[1]] = this.currentState;
     }
-    public String getCo(){
-            return xaxis + " " + yaxis;
+    public int[] getCo(){
+            int[] temp = {xaxis,yaxis};
+            return temp ;
         }
 
     public String getCurrentState() {

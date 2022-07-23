@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="Made changes to Junction added turns and tjunctions">
-      <change afterPath="$PROJECT_DIR$/src/display/ShortestPath.java" afterDir="false" />
+    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/CellBtn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/CellBtn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/JunctionCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/JunctionCheck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ResultsPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ResultsPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/TrafficSimulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/TrafficSimulator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/CellBtn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/CellBtn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/JunctionCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/JunctionCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/Sql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/Sql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/OptionsMenu.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/OptionsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/ResultsPage.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/ResultsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/TrafficSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/RouteAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/RouteAlgo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "323",
     "jdk.selected.JAVA_MODULE": "18",
     "last_opened_file_path": "C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master",
@@ -98,6 +94,21 @@
       <option name="presentableId" value="Default" />
       <updated>1654365874989</updated>
     </task>
+    <task id="LOCAL-00001" summary="Mades Many changes. implemented path finding algo and replace hashmap with 2d string array">
+      <created>1658530878782</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1658530878782</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array">
+      <created>1658530941377</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658530941377</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,7 +124,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mades changes to Junction added turns and tjunctions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mades changes to Junction added turns and tjunctions" />
+    <MESSAGE value="Mades Many changes. implemented path finding algo and replace hashmap with 2d string array" />
+    <MESSAGE value="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

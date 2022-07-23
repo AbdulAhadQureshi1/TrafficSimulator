@@ -42,12 +42,12 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="8c6e4" class="javax.swing.JLabel">
+          <component id="8c6e4" class="javax.swing.JLabel" binding="rL">
             <constraints/>
             <properties>
               <font name="Century Gothic" size="16"/>
               <foreground color="-16777216"/>
-              <text value="No. Of Vehicles         "/>
+              <text value="Road Length"/>
             </properties>
           </component>
           <hspacer id="f93ce">

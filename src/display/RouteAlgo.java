@@ -9,7 +9,7 @@ public class RouteAlgo {
     public static int sink = 0;
     public static int junctions = 0;
     public static int roads = 0;
-    public static int[] getRoute(){
+    public static float[] getRoute(float speed){
         int itemsource = 0;
         int itemsink = 0;
         int[][] locsource = new int[source][];
@@ -40,7 +40,7 @@ public class RouteAlgo {
         for(int jef :distances) {
             System.out.println(jef);
         }
-        int[] temp = {Arrays.stream(distances).min().getAsInt(),Arrays.stream(distances).max().getAsInt()};
+        float[] temp = {Arrays.stream(distances).min().getAsInt()-1,Arrays.stream(distances).max().getAsInt()-1,(roads)*60*60/speed};
         return temp;
     }
 }

@@ -1,12 +1,14 @@
 package display;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class ResultsPage extends JFrame {
     private JPanel resultsMainPage;
     private JButton backToMain;
     private JPanel VLabels;
+    private JLabel shotDist;
+    private JLabel longDist;
+    private JLabel time;
     private JTextArea textArea1;
 
     public ResultsPage(int width, int height) {
@@ -23,9 +25,9 @@ public class ResultsPage extends JFrame {
         return backToMain;
     }
 
-    public void Text(int[] data) {
-        JLabel sp = new JLabel("Shortest Distance = " + data[0]);
-        JLabel lp = new JLabel("Longest Distance = " + data[1]);
-        textArea1.append("Shortest Distance = " + data[0]);
+    public void Text(float[] data) {
+        shotDist.setText("Shortest Distance is " + data[0]);
+        longDist.setText("Longest Distance is " + data[1]);
+        time.setText("Average Commute Time is " + (data[2]) + " Seconds");
     }
 }

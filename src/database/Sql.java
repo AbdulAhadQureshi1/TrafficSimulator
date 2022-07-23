@@ -58,11 +58,14 @@ public class Sql {
         }
         return -1;
     }
-    public int newSimulation(int entrySerial,int trafficFlow, int accidents, float efficiency, float avg, int userSerial){
+    public int newSimulation(int trafficFlow, int accidents, float efficiency, float avg, int userSerial){
         Date date = new Date();
         try{
-            ResultSet rs = stmt.executeQuery("SELECT Serial FROM Login_Details");
-            while(rs.next())
+            ResultSet rs = stmt.executeQuery("SELECT MAX(EntrySerial) FROM sim_record;");
+            int entrySerial = 1;
+            while (rs.next()) {
+                entrySerial += rs.getInt("Max(EntrySerial)");
+            }
             return stmt.executeUpdate("INSERT INTO sim_record VALUES (" + entrySerial +","+ trafficFlow + "," + accidents + "," + efficiency + "," + avg + "," + date.toString() +","+ userSerial + ");");
         } catch(SQLException e) {
             e.printStackTrace();
@@ -79,9 +82,5 @@ public class Sql {
 
         }
         return 0;
-    }
-    public static void main(String[] args){
-        Sql db = new Sql();
-        System.out.println(db.auth("Arz","bbg"));
     }
 }

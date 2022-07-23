@@ -1,11 +1,15 @@
 import display.*;
 import database.*;
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
 
 
     public static void main(String[] args) {
+
+        //Variables
+        AtomicInteger serial = new AtomicInteger();
 
         // getting the dimensions of the device
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
@@ -27,8 +31,8 @@ public class Main {
         login.getUser().addActionListener(e -> {
             Sql s = new Sql();
             String[] credentials = login.inputs();
-            int serial = s.auth(credentials[0],credentials[1]);
-            if (serial != -1 ){
+            serial.set(s.auth(credentials[0], credentials[1]));
+            if (serial.get() != -1 ){
                 login.dispose();
                 start.setVisible(true);
             }
@@ -63,10 +67,9 @@ public class Main {
         mainPage.getSimulateButton().addActionListener(e -> {
             mainPage.setVisible(false);
             simulationResults.setVisible(true);
-            int[] data = RouteAlgo.getRoute();
+            float[] data = RouteAlgo.getRoute(options.getSpeed());
             simulationResults.Text(data);
             //debug
-            RouteAlgo.getRoute();
             for(int x =0;x<10;x++) {
                 for (int y = 0; y < 20; y++) {
                     System.out.print(RouteAlgo.tiles_info[x][y]+" ");

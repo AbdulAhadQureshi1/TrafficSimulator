@@ -3,10 +3,10 @@ import javax.swing.*;
 
 public class OptionsMenu extends JFrame {
     private JPanel optionsMenu;
-    private JTextField noOfVehicles;
+    private JTextField roadLength;
     private JButton backButton;
     private JTextField speedLimit;
-    private JTextField time;
+    private JTextField meanWidth;
     private JLabel rL;
 
     public OptionsMenu(int width, int height) {
@@ -16,6 +16,8 @@ public class OptionsMenu extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setContentPane(optionsMenu);
         this.speedLimit.setText("60");
+        this.meanWidth.setText("0.5");
+        this.roadLength.setText("20");
 
     }
 
@@ -25,5 +27,11 @@ public class OptionsMenu extends JFrame {
 
     public float getSpeed() {
         return Float.parseFloat(speedLimit.getText());
+    }
+    public float getMeanWidth() {
+        return Float.parseFloat(meanWidth.getText());
+    }
+    public float getLength() {
+        return Float.parseFloat(roadLength.getText());
     }
 }

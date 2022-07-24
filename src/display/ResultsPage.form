@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="display.ResultsPage">
   <grid id="27dc6" binding="resultsMainPage" layout-manager="FormLayout">
-    <rowspec value="center:344px:noGrow"/>
+    <rowspec value="center:254px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:d:grow"/>
+    <rowspec value="center:57px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="center:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:20px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:20px:noGrow"/>
+    <rowspec value="center:20px:noGrow"/>
+    <rowspec value="top:19px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:d:grow"/>
-    <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:20px:noGrow"/>
+    <rowspec value="top:5dlu:noGrow"/>
+    <rowspec value="center:38px:noGrow"/>
+    <rowspec value="top:10dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <colspec value="fill:d:grow"/>
     <constraints>
@@ -26,22 +26,10 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="c1180" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
-          <forms top="30" left="0" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <font name="Broadway" size="48"/>
-          <foreground color="-16777216"/>
-          <text value="🚗  SIMULATION RESULTS"/>
-        </properties>
-      </component>
       <grid id="afa39" binding="VLabels" layout-manager="FormLayout">
         <rowspec value="center:d:grow"/>
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -68,35 +56,61 @@
       </component>
       <component id="df4c" class="javax.swing.JLabel" binding="shotDist">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <font name="Century Gothic" size="16" style="1"/>
           <text value=""/>
         </properties>
       </component>
       <component id="b33f0" class="javax.swing.JLabel" binding="longDist">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <font name="Century Gothic" size="16" style="1"/>
           <text value=""/>
         </properties>
       </component>
-      <vspacer id="2427a">
-        <constraints>
-          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
-        </constraints>
-      </vspacer>
       <component id="99f26" class="javax.swing.JLabel" binding="time">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <font name="Century Gothic" size="16" style="1"/>
           <text value="Label"/>
+        </properties>
+      </component>
+      <component id="c1180" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+          <forms top="30" left="0" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <font name="Broadway" size="48"/>
+          <foreground color="-16777216"/>
+          <text value="🚗  SIMULATION RESULTS"/>
+        </properties>
+      </component>
+      <vspacer id="a0bef">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+      </vspacer>
+      <component id="d8528" class="javax.swing.JLabel" binding="efficiency">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <focusable value="true"/>
+          <font name="Century Gothic" size="16" style="1"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

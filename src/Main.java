@@ -2,6 +2,7 @@ import display.*;
 import database.*;
 import java.awt.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import statistics.*;
 
 public class Main {
 
@@ -10,7 +11,7 @@ public class Main {
 
         //Variables
         AtomicInteger serial = new AtomicInteger();
-
+        RouteAlgo route = new RouteAlgo();
         // getting the dimensions of the device
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) size.getWidth();
@@ -67,7 +68,7 @@ public class Main {
         mainPage.getSimulateButton().addActionListener(e -> {
             mainPage.setVisible(false);
             simulationResults.setVisible(true);
-            float[] data = RouteAlgo.getRoute(options.getSpeed());
+            float[] data = route.getRoute(options.getSpeed());
             simulationResults.Text(data);
             //debug
             for(int x =0;x<10;x++) {

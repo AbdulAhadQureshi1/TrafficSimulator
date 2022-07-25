@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import javax.swing.Timer;
+import statistics.*;
 
 public class TrafficSimulator extends JFrame{
     private JPanel mainPanel;

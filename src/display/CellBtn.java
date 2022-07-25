@@ -1,8 +1,7 @@
 package display;
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-
+import statistics.*;
 
 public class CellBtn extends JButton {
 

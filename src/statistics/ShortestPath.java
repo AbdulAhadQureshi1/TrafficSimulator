@@ -3,9 +3,7 @@ package statistics;
 public class ShortestPath {
     static boolean[][] visited;
 
-    // Check if it is possible to go to (x, y) from the
-    // current position. The function returns false if the
-    // cell has value 0 or already visited
+    //The function returns false if the cell has value 0 or already visited
     static boolean isSafe(String[][] mat, boolean[][] visited,
                           int x, int y)
     {
@@ -24,34 +22,38 @@ public class ShortestPath {
             return min_dist;
         }
 
-        // set (i, j) cell as visited
         visited[i][j] = true;
+
         // go to the bottom cell
         if (isSafe(mat, visited, i + 1, j)) {
             min_dist = findShortestPath(mat, i + 1, j, x, y,
                     min_dist, dist + 1);
         }
+
         // go to the right cell
         if (isSafe(mat, visited, i, j + 1)) {
             min_dist = findShortestPath(mat, i, j + 1, x, y,
                     min_dist, dist + 1);
         }
+
         // go to the top cell
         if (isSafe(mat, visited, i - 1, j)) {
             min_dist = findShortestPath(mat, i - 1, j, x, y,
                     min_dist, dist + 1);
         }
+
         // go to the left cell
         if (isSafe(mat, visited, i, j - 1)) {
             min_dist = findShortestPath(mat, i, j - 1, x, y,
                     min_dist, dist + 1);
         }
-        // backtrack: remove (i, j) from the visited matrix
+
+        //remove from the visited matrix
         visited[i][j] = false;
         return min_dist;
     }
 
-    // Wrapper over findShortestPath() function
+    //findShortestPath() function
     static int findShortestPathLength(String[][] mat,
                                       int[] src, int[] dest)
     {

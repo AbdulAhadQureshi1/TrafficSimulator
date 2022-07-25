@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="smaller changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/CellBtn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/CellBtn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/RouteAlgo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/ShortestPath.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/TrafficSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/statistics/ShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/ShortestPath.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658750754921</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="smaller changes">
+      <created>1658751523970</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658751523970</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

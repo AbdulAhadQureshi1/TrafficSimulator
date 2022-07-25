@@ -1,0 +1,49 @@
+<changelist name="Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]" date="1658747672038" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 7/25/2022 3:14 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/CellBtn.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/display/CellBtn.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/CellBtn.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/ResultsPage.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/display/ResultsPage.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/ResultsPage.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/JunctionCheck.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/display/JunctionCheck.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/JunctionCheck.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/Main.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/Main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/OptionsMenu.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/display/OptionsMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/OptionsMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/TrafficSimulator.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/display/TrafficSimulator.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/TrafficSimulator.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/database/Sql.class" />
+    <option name="AFTER_PATH" value="out/production/TrafficSimulator/database/Sql.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_25_2022_3_14_PM_[Changes]/Sql.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/RouteAlgo.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/TrafficSimulator/display/ShortestPath.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>

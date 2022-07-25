@@ -1,0 +1,514 @@
+Index: src/display/TrafficSimulator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package display;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.util.HashMap;\r\nimport javax.swing.Timer;\r\n\r\npublic class TrafficSimulator extends JFrame{\r\n    private JPanel mainPanel;\r\n    private JPanel navBar;\r\n    private JButton fileButton;\r\n    private JButton saveButton;\r\n    private JButton simulateButton;\r\n    private JButton OptionsButton;\r\n    private JLabel mainHeading;\r\n\r\n    private JPanel map_frame;\r\n    private static CellBtn btns[][] = new CellBtn[10][20];\r\n    public TrafficSimulator(int width, int height) {\r\n\r\n        this.setTitle(\"Welcome\");\r\n        this.setSize(width, height);\r\n        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);\r\n        this.setContentPane(mainPanel);\r\n\r\n        // creating infinite loop that runs in background to check the junctions\r\n        Timer timer = new Timer(1000/60,new JunctionCheck());\r\n        timer.start();\r\n\r\n        // map panel\r\n        JPanel map = new JPanel();\r\n        map_frame.setLayout(null);\r\n        map.setBounds(0, 0, 600, 300);\r\n        map.setLayout(new GridBagLayout());\r\n        map.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));\r\n        map_frame.add(map);\r\n\r\n        // map buttons\r\n        GridBagConstraints c = new GridBagConstraints();\r\n\r\n        for (int i = 0; i < 10; i++) {\r\n            for(int j = 0; j < 20 ;j++) {\r\n                c.ipady = 0;\r\n                c.gridx = j;\r\n                c.gridy = i;\r\n                CellBtn map_tile = new CellBtn(i,j);\r\n                btns[i][j] = map_tile;\r\n                map.add(btns[i][j], c);\r\n\r\n                RouteAlgo.tiles_info[i][j] =  map_tile.getCurrentState();\r\n            }\r\n        }\r\n\r\n    }\r\n    public JButton getSimulateButton() {\r\n        return simulateButton;\r\n    }\r\n\r\n    public JButton getOptionsButton() {\r\n        return OptionsButton;\r\n    }\r\n\r\n    public static CellBtn[][] getBtns(){\r\n        return btns;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/TrafficSimulator.java b/src/display/TrafficSimulator.java
+--- a/src/display/TrafficSimulator.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/TrafficSimulator.java	(date 1658605959208)
+@@ -1,15 +1,14 @@
+ package display;
+ 
++import statistics.RouteAlgo;
++
+ import javax.swing.*;
+ import java.awt.*;
+-import java.util.HashMap;
+ import javax.swing.Timer;
+ 
+ public class TrafficSimulator extends JFrame{
+     private JPanel mainPanel;
+     private JPanel navBar;
+-    private JButton fileButton;
+-    private JButton saveButton;
+     private JButton simulateButton;
+     private JButton OptionsButton;
+     private JLabel mainHeading;
+Index: src/display/ShortestPath.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/ShortestPath.java b/src/statistics/ShortestPath.java
+rename from src/display/ShortestPath.java
+rename to src/statistics/ShortestPath.java
+--- a/src/display/ShortestPath.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/statistics/ShortestPath.java	(date 1658605496425)
+@@ -1,4 +1,4 @@
+-package display;
++package statistics;
+ 
+ public class ShortestPath {
+     static boolean[][] visited;
+Index: src/display/OptionsMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package display;\r\nimport javax.swing.*;\r\n\r\npublic class OptionsMenu extends JFrame {\r\n    private JPanel optionsMenu;\r\n    private JTextField noOfVehicles;\r\n    private JButton backButton;\r\n    private JTextField speedLimit;\r\n    private JTextField time;\r\n    private JLabel rL;\r\n\r\n    public OptionsMenu(int width, int height) {\r\n\r\n        this.setTitle(\"Welcome\");\r\n        this.setSize(width, height);\r\n        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);\r\n        this.setContentPane(optionsMenu);\r\n        this.speedLimit.setText(\"60\");\r\n\r\n    }\r\n\r\n    public JButton getBackButton() {\r\n        return backButton;\r\n    }\r\n\r\n    public float getSpeed() {\r\n        return Float.parseFloat(speedLimit.getText());\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/OptionsMenu.java b/src/display/OptionsMenu.java
+--- a/src/display/OptionsMenu.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/OptionsMenu.java	(date 1658605839953)
+@@ -3,11 +3,9 @@
+ 
+ public class OptionsMenu extends JFrame {
+     private JPanel optionsMenu;
+-    private JTextField noOfVehicles;
+     private JButton backButton;
+     private JTextField speedLimit;
+-    private JTextField time;
+-    private JLabel rL;
++    private JLabel km;
+ 
+     public OptionsMenu(int width, int height) {
+ 
+Index: src/display/StartPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package display;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.event.ActionEvent;\r\n\r\npublic class StartPage extends JFrame{\r\n    private JPanel startPanelMain;\r\n    private JButton openButton;\r\n    private JButton newButton;\r\n    private JPanel startPageButtons;\r\n\r\n    public StartPage(int width, int height){\r\n        this.setTitle(\"Welcome\");\r\n        this.setSize(width,height);\r\n        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);\r\n        this.setContentPane(startPanelMain);\r\n\r\n    }\r\n\r\n    public JButton getOpenButton() {\r\n        return openButton;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/StartPage.java b/src/display/StartPage.java
+--- a/src/display/StartPage.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/StartPage.java	(date 1658605959193)
+@@ -1,12 +1,11 @@
+ package display;
+ 
+ import javax.swing.*;
+-import java.awt.event.ActionEvent;
+ 
+ public class StartPage extends JFrame{
+     private JPanel startPanelMain;
+     private JButton openButton;
+-    private JButton newButton;
++    private JButton previousSimulationsButton;
+     private JPanel startPageButtons;
+ 
+     public StartPage(int width, int height){
+Index: src/display/CellBtn.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package display;\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.util.HashMap;\r\n\r\n\r\npublic class CellBtn extends JButton {\r\n\r\n    private final int yaxis;\r\n    private final int xaxis;\r\n    private String currentState = \"x\";\r\n    private final Icon grass = new ImageIcon(\"src/display/images/grass.png\");\r\n    private final Icon roadh = new ImageIcon(\"src/display/images/roadHorizontal.png\");\r\n    private final Icon roadv = new ImageIcon(\"src/display/images/roadVertical.png\");\r\n\r\n    private final Icon source = new ImageIcon(\"src/display/images/traffic-jam.png\");\r\n\r\n    private final Icon sink = new ImageIcon(\"src/display/images/placeholder.png\");\r\n    public CellBtn(int x, int y){\r\n\r\n        // these are values every btn will by default have\r\n        super.setIcon(grass);\r\n        super.addActionListener(e -> {\r\n            if (this.getCurrentState().equals(\"x\")) {\r\n                this.changeState();\r\n            }\r\n            else {\r\n                this.revertState();\r\n            }\r\n\r\n        });\r\n        super.setBounds(0, 0, 30, 30);\r\n        super.setPreferredSize(new Dimension(30, 30));\r\n        xaxis = x;\r\n        yaxis = y;\r\n    }\r\n    public void changeState(){\r\n\r\n        Frame f = new Frame();\r\n        String side;\r\n\r\n        int[] borderCheck = this.getCo();\r\n\r\n        Object[] options;\r\n        // catching indexOutofBound exception for buttons on single digit column numbers\r\n        try {\r\n            if (borderCheck[0] == 0 || borderCheck[1] == 0 || borderCheck[0] == 9 || borderCheck[1] == 9) {\r\n                options = new Object[]{\"Vertical\", \"Horizontal\", \"Source\", \"Sink\"};\r\n            } else {\r\n                options = new Object[]{\"Vertical\", \"Horizontal\"};\r\n            }\r\n        } catch(IndexOutOfBoundsException ignored) {\r\n            options  = new Object[]{\"Vertical\", \"Horizontal\"};\r\n        }\r\n\r\n        side = (String)JOptionPane.showInputDialog(f, \"Orientation:\\n\",\r\n                \"Road Orientation\",\r\n                JOptionPane.PLAIN_MESSAGE,\r\n                null,\r\n                options,\r\n                \"Vertical\");\r\n\r\n        // try-catch because cancelling gives an error, does not crash the program but still shows error in the terminal\r\n        try {\r\n\r\n            switch (side) {\r\n                case \"Vertical\" -> {\r\n                    super.setIcon(roadv);\r\n                    setCurrentState(\"|\");\r\n                    RouteAlgo.roads++;\r\n                }\r\n                case \"Horizontal\" -> {\r\n                    super.setIcon(roadh);\r\n                    setCurrentState(\"-\");\r\n                    RouteAlgo.roads++;\r\n                }\r\n                case \"Source\" -> {\r\n                    super.setIcon(source);\r\n                    setCurrentState(\"source\");\r\n                    RouteAlgo.source++;\r\n                }\r\n                case \"Sink\" -> {\r\n                    super.setIcon(sink);\r\n                    setCurrentState(\"sink\");\r\n                    RouteAlgo.sink++;\r\n                }\r\n            }\r\n\r\n\r\n\r\n        }catch (Exception ignored) {}\r\n\r\n        int[] index = this.getCo();\r\n        RouteAlgo.tiles_info[index[0]][index[1]] = this.currentState;\r\n    }\r\n\r\n    public void revertState() {\r\n\r\n        Frame f = new Frame();\r\n        int result = JOptionPane.showConfirmDialog(f,\"Are you sure you want to revert back to grass?\", \"Revert Back to Grass\",\r\n                JOptionPane.YES_NO_OPTION,\r\n                JOptionPane.QUESTION_MESSAGE);\r\n        if(result == JOptionPane.YES_OPTION){\r\n            setCurrentState(\"x\");\r\n            super.setIcon(grass);\r\n            RouteAlgo.roads--;\r\n        }\r\n        int[] index = this.getCo();\r\n        RouteAlgo.tiles_info[index[0]][index[1]] = this.currentState;\r\n    }\r\n    public int[] getCo(){\r\n            int[] temp = {xaxis,yaxis};\r\n            return temp ;\r\n        }\r\n\r\n    public String getCurrentState() {\r\n        return currentState;\r\n    }\r\n\r\n    public void setCurrentState(String currentState) {\r\n        this.currentState = currentState;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/CellBtn.java b/src/display/CellBtn.java
+--- a/src/display/CellBtn.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/CellBtn.java	(date 1658605496472)
+@@ -1,7 +1,8 @@
+ package display;
++import statistics.RouteAlgo;
++
+ import javax.swing.*;
+ import java.awt.*;
+-import java.util.HashMap;
+ 
+ 
+ public class CellBtn extends JButton {
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import display.*;\r\nimport database.*;\r\nimport java.awt.*;\r\nimport java.util.concurrent.atomic.AtomicInteger;\r\n\r\npublic class Main {\r\n\r\n\r\n    public static void main(String[] args) {\r\n\r\n        //Variables\r\n        AtomicInteger serial = new AtomicInteger();\r\n\r\n        // getting the dimensions of the device\r\n        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();\r\n        int width = (int) size.getWidth();\r\n        int height = (int) size.getHeight();\r\n\r\n        //loading up all the pages\r\n        LoginPage login = new LoginPage(width, height);\r\n        RegisterPage register = new RegisterPage(width,height);\r\n        StartPage start = new StartPage(width, height);\r\n        TrafficSimulator mainPage = new TrafficSimulator(width, height);\r\n        ResultsPage simulationResults = new ResultsPage(width, height);\r\n        OptionsMenu options = new OptionsMenu(width, height);\r\n\r\n        login.setVisible(true);\r\n\r\n        // page-switching mechanism\r\n        // used lambda functions just for saving time and lines\r\n        login.getUser().addActionListener(e -> {\r\n            Sql s = new Sql();\r\n            String[] credentials = login.inputs();\r\n            serial.set(s.auth(credentials[0], credentials[1]));\r\n            if (serial.get() != -1 ){\r\n                login.dispose();\r\n                start.setVisible(true);\r\n            }\r\n            else{\r\n                login.noMatch();\r\n                login.setVisible(true);\r\n            }\r\n        });\r\n\r\n        login.newUser().addActionListener(e -> {\r\n            login.dispose();\r\n            register.setVisible(true);\r\n\r\n        });\r\n        register.getSubmitButton().addActionListener(e -> {\r\n            Sql s = new Sql();\r\n            String[] details = register.details();\r\n            int rtn = s.newUser(details[0],details[1]);\r\n            if (rtn == -1){\r\n                register.userExist();\r\n                register.setVisible(true);\r\n            }\r\n            else {\r\n                register.dispose();\r\n                login.setVisible(true);\r\n            }\r\n        });\r\n        start.getOpenButton().addActionListener(e -> {\r\n            start.dispose();\r\n            mainPage.setVisible(true);\r\n        });\r\n        mainPage.getSimulateButton().addActionListener(e -> {\r\n            mainPage.setVisible(false);\r\n            simulationResults.setVisible(true);\r\n            float[] data = RouteAlgo.getRoute(options.getSpeed());\r\n            simulationResults.Text(data);\r\n            //debug\r\n            for(int x =0;x<10;x++) {\r\n                for (int y = 0; y < 20; y++) {\r\n                    System.out.print(RouteAlgo.tiles_info[x][y]+\" \");\r\n\r\n                }\r\n                System.out.println();\r\n            }\r\n        });\r\n        mainPage.getOptionsButton().addActionListener(e -> {\r\n            mainPage.setVisible(false);\r\n            options.setVisible(true);\r\n        });\r\n        simulationResults.getBackToMain().addActionListener(e -> {\r\n            mainPage.setVisible(true);\r\n            simulationResults.dispose();\r\n        });\r\n        options.getBackButton().addActionListener(e -> {\r\n            mainPage.setVisible(true);\r\n            options.setVisible(false);\r\n        });\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/Main.java	(date 1658747582432)
+@@ -1,5 +1,7 @@
+ import display.*;
+ import database.*;
++import statistics.*;
++
+ import java.awt.*;
+ import java.util.concurrent.atomic.AtomicInteger;
+ 
+@@ -23,6 +25,7 @@
+         TrafficSimulator mainPage = new TrafficSimulator(width, height);
+         ResultsPage simulationResults = new ResultsPage(width, height);
+         OptionsMenu options = new OptionsMenu(width, height);
++        RouteAlgo routes = new RouteAlgo();
+ 
+         login.setVisible(true);
+ 
+@@ -67,7 +70,7 @@
+         mainPage.getSimulateButton().addActionListener(e -> {
+             mainPage.setVisible(false);
+             simulationResults.setVisible(true);
+-            float[] data = RouteAlgo.getRoute(options.getSpeed());
++            float[] data = routes.getRoute(options.getSpeed());
+             simulationResults.Text(data);
+             //debug
+             for(int x =0;x<10;x++) {
+Index: src/display/RouteAlgo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/RouteAlgo.java b/src/statistics/RouteAlgo.java
+rename from src/display/RouteAlgo.java
+rename to src/statistics/RouteAlgo.java
+--- a/src/display/RouteAlgo.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/statistics/RouteAlgo.java	(date 1658747544722)
+@@ -1,4 +1,4 @@
+-package display;
++package statistics;
+ import java.util.Arrays;
+ 
+ public class RouteAlgo {
+@@ -9,7 +9,7 @@
+     public static int sink = 0;
+     public static int junctions = 0;
+     public static int roads = 0;
+-    public static float[] getRoute(float speed){
++    public float[] getRoute(float speed){
+         int itemsource = 0;
+         int itemsink = 0;
+         int[][] locsource = new int[source][];
+Index: src/display/TrafficSimulator.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"display.TrafficSimulator\">\r\n  <grid id=\"27dc6\" binding=\"mainPanel\" layout-manager=\"FormLayout\">\r\n    <rowspec value=\"center:d:noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:19px:noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"top:28px:noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"top:40px:noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <colspec value=\"fill:d:grow\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"940\" height=\"813\"/>\r\n    </constraints>\r\n    <properties>\r\n      <background color=\"-1\"/>\r\n      <enabled value=\"true\"/>\r\n      <foreground color=\"-16121066\"/>\r\n      <preferredSize width=\"1000\" height=\"800\"/>\r\n      <visible value=\"true\"/>\r\n    </properties>\r\n    <border type=\"none\" title-position=\"6\">\r\n      <font/>\r\n      <color color=\"-1\"/>\r\n    </border>\r\n    <children>\r\n      <grid id=\"edceb\" binding=\"navBar\" layout-manager=\"FlowLayout\" hgap=\"0\" vgap=\"0\" flow-align=\"0\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\" defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-1\"/>\r\n          <inheritsPopupMenu value=\"false\"/>\r\n          <minimumSize width=\"115\" height=\"30\"/>\r\n        </properties>\r\n        <border type=\"line\"/>\r\n        <children>\r\n          <component id=\"3ce7c\" class=\"javax.swing.JButton\" binding=\"fileButton\" default-binding=\"true\">\r\n            <constraints/>\r\n            <properties>\r\n              <alignmentX value=\"0.0\"/>\r\n              <background color=\"-1\"/>\r\n              <borderPainted value=\"false\"/>\r\n              <contentAreaFilled value=\"false\"/>\r\n              <enabled value=\"true\"/>\r\n              <focusPainted value=\"false\"/>\r\n              <foreground color=\"-16121066\"/>\r\n              <hideActionText value=\"false\"/>\r\n              <maximumSize width=\"30\" height=\"10\"/>\r\n              <minimumSize width=\"30\" height=\"10\"/>\r\n              <opaque value=\"false\"/>\r\n              <text value=\"File\"/>\r\n            </properties>\r\n          </component>\r\n          <component id=\"f0c33\" class=\"javax.swing.JButton\" binding=\"saveButton\" default-binding=\"true\">\r\n            <constraints/>\r\n            <properties>\r\n              <alignmentX value=\"0.0\"/>\r\n              <background color=\"-1\"/>\r\n              <borderPainted value=\"false\"/>\r\n              <contentAreaFilled value=\"false\"/>\r\n              <enabled value=\"true\"/>\r\n              <focusPainted value=\"false\"/>\r\n              <foreground color=\"-16121066\"/>\r\n              <horizontalAlignment value=\"0\"/>\r\n              <maximumSize width=\"30\" height=\"10\"/>\r\n              <minimumSize width=\"30\" height=\"10\"/>\r\n              <opaque value=\"false\"/>\r\n              <text value=\"Save\"/>\r\n            </properties>\r\n          </component>\r\n        </children>\r\n      </grid>\r\n      <component id=\"f2dab\" class=\"javax.swing.JLabel\" binding=\"mainHeading\">\r\n        <constraints>\r\n          <grid row=\"4\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-1\"/>\r\n          <focusable value=\"false\"/>\r\n          <font name=\"Broadway\" size=\"48\"/>\r\n          <foreground color=\"-16121066\"/>\r\n          <minimumSize width=\"200\" height=\"44\"/>\r\n          <text value=\"\uD83D\uDE97  TRAFFIC SIMULATOR\"/>\r\n        </properties>\r\n      </component>\r\n      <grid id=\"e7107\" binding=\"map_frame\" layout-manager=\"FlowLayout\" hgap=\"5\" vgap=\"5\" flow-align=\"1\">\r\n        <constraints>\r\n          <grid row=\"8\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\" defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-2763307\"/>\r\n          <foreground color=\"-16777216\"/>\r\n          <minimumSize width=\"200\" height=\"500\"/>\r\n          <preferredSize width=\"600\" height=\"300\"/>\r\n        </properties>\r\n        <border type=\"line\">\r\n          <title-color color=\"-3092263\"/>\r\n        </border>\r\n        <children>\r\n          <vspacer id=\"7da5a\">\r\n            <constraints/>\r\n          </vspacer>\r\n        </children>\r\n      </grid>\r\n      <grid id=\"58aba\" layout-manager=\"BorderLayout\" hgap=\"10\" vgap=\"0\">\r\n        <constraints>\r\n          <grid row=\"12\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"2\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-1\"/>\r\n          <foreground color=\"-16777216\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <component id=\"69824\" class=\"javax.swing.JButton\" binding=\"simulateButton\" default-binding=\"true\">\r\n            <constraints border-constraint=\"West\"/>\r\n            <properties>\r\n              <background color=\"-12124366\"/>\r\n              <borderPainted value=\"true\"/>\r\n              <contentAreaFilled value=\"false\"/>\r\n              <focusable value=\"false\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <preferredSize width=\"120\" height=\"50\"/>\r\n              <text value=\"⏺️ Simulate\"/>\r\n            </properties>\r\n          </component>\r\n          <component id=\"4a5e0\" class=\"javax.swing.JButton\" binding=\"OptionsButton\">\r\n            <constraints border-constraint=\"Center\"/>\r\n            <properties>\r\n              <background color=\"-60408\"/>\r\n              <borderPainted value=\"true\"/>\r\n              <contentAreaFilled value=\"false\"/>\r\n              <focusable value=\"false\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <preferredSize width=\"120\" height=\"50\"/>\r\n              <text value=\"\uD83D\uDD27 ️Options\"/>\r\n            </properties>\r\n          </component>\r\n        </children>\r\n      </grid>\r\n      <vspacer id=\"b5d24\">\r\n        <constraints>\r\n          <grid row=\"6\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"6\" hsize-policy=\"1\" anchor=\"0\" fill=\"2\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n      </vspacer>\r\n      <vspacer id=\"e8a9\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"6\" hsize-policy=\"1\" anchor=\"0\" fill=\"2\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n      </vspacer>\r\n      <vspacer id=\"f250d\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"6\" hsize-policy=\"1\" anchor=\"0\" fill=\"2\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n      </vspacer>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/TrafficSimulator.form b/src/display/TrafficSimulator.form
+--- a/src/display/TrafficSimulator.form	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/TrafficSimulator.form	(date 1658605959193)
+@@ -41,42 +41,7 @@
+           <minimumSize width="115" height="30"/>
+         </properties>
+         <border type="line"/>
+-        <children>
+-          <component id="3ce7c" class="javax.swing.JButton" binding="fileButton" default-binding="true">
+-            <constraints/>
+-            <properties>
+-              <alignmentX value="0.0"/>
+-              <background color="-1"/>
+-              <borderPainted value="false"/>
+-              <contentAreaFilled value="false"/>
+-              <enabled value="true"/>
+-              <focusPainted value="false"/>
+-              <foreground color="-16121066"/>
+-              <hideActionText value="false"/>
+-              <maximumSize width="30" height="10"/>
+-              <minimumSize width="30" height="10"/>
+-              <opaque value="false"/>
+-              <text value="File"/>
+-            </properties>
+-          </component>
+-          <component id="f0c33" class="javax.swing.JButton" binding="saveButton" default-binding="true">
+-            <constraints/>
+-            <properties>
+-              <alignmentX value="0.0"/>
+-              <background color="-1"/>
+-              <borderPainted value="false"/>
+-              <contentAreaFilled value="false"/>
+-              <enabled value="true"/>
+-              <focusPainted value="false"/>
+-              <foreground color="-16121066"/>
+-              <horizontalAlignment value="0"/>
+-              <maximumSize width="30" height="10"/>
+-              <minimumSize width="30" height="10"/>
+-              <opaque value="false"/>
+-              <text value="Save"/>
+-            </properties>
+-          </component>
+-        </children>
++        <children/>
+       </grid>
+       <component id="f2dab" class="javax.swing.JLabel" binding="mainHeading">
+         <constraints>
+Index: src/display/StartPage.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"display.StartPage\">\r\n  <grid id=\"27dc6\" binding=\"startPanelMain\" layout-manager=\"FormLayout\">\r\n    <rowspec value=\"center:d:grow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"top:max(d;4px):grow\"/>\r\n    <colspec value=\"fill:d:grow\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"947\" height=\"625\"/>\r\n    </constraints>\r\n    <properties>\r\n      <background color=\"-1\"/>\r\n      <foreground color=\"-16777216\"/>\r\n    </properties>\r\n    <border type=\"none\"/>\r\n    <children>\r\n      <component id=\"ce7d4\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"10\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <font name=\"Broadway\" size=\"48\"/>\r\n          <foreground color=\"-16777216\"/>\r\n          <horizontalAlignment value=\"0\"/>\r\n          <text value=\"\uD83D\uDE97  TRAFFIC SIMULATOR\"/>\r\n          <visible value=\"true\"/>\r\n        </properties>\r\n      </component>\r\n      <grid id=\"e1398\" binding=\"startPageButtons\" layout-manager=\"FlowLayout\" hgap=\"5\" vgap=\"5\" flow-align=\"1\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-1\"/>\r\n          <foreground color=\"-16777216\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <component id=\"b50d4\" class=\"javax.swing.JButton\" binding=\"openButton\" default-binding=\"true\">\r\n            <constraints/>\r\n            <properties>\r\n              <actionCommand value=\"Open\"/>\r\n              <borderPainted value=\"true\"/>\r\n              <contentAreaFilled value=\"false\"/>\r\n              <focusable value=\"false\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <opaque value=\"false\"/>\r\n              <preferredSize width=\"100\" height=\"50\"/>\r\n              <text value=\"\uD83D\uDCC2 Open\"/>\r\n            </properties>\r\n          </component>\r\n          <component id=\"e9af2\" class=\"javax.swing.JButton\" binding=\"newButton\" default-binding=\"true\">\r\n            <constraints/>\r\n            <properties>\r\n              <borderPainted value=\"true\"/>\r\n              <contentAreaFilled value=\"false\"/>\r\n              <focusable value=\"false\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <opaque value=\"false\"/>\r\n              <preferredSize width=\"100\" height=\"50\"/>\r\n              <text value=\"\uD83D\uDCC1  New\"/>\r\n            </properties>\r\n          </component>\r\n        </children>\r\n      </grid>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/StartPage.form b/src/display/StartPage.form
+--- a/src/display/StartPage.form	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/StartPage.form	(date 1658605959177)
+@@ -51,7 +51,7 @@
+               <text value="📂 Open"/>
+             </properties>
+           </component>
+-          <component id="e9af2" class="javax.swing.JButton" binding="newButton" default-binding="true">
++          <component id="e9af2" class="javax.swing.JButton" binding="previousSimulationsButton" default-binding="true">
+             <constraints/>
+             <properties>
+               <borderPainted value="true"/>
+@@ -60,7 +60,7 @@
+               <foreground color="-16777216"/>
+               <opaque value="false"/>
+               <preferredSize width="100" height="50"/>
+-              <text value="📁  New"/>
++              <text value="Previous Simulations"/>
+             </properties>
+           </component>
+         </children>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"456e95b5-c548-4a89-b571-37eff9cbe07e\" name=\"Changes\" comment=\"Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/database/Sql.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/database/Sql.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/display/OptionsMenu.form\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/display/OptionsMenu.form\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/display/OptionsMenu.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/display/OptionsMenu.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/display/ResultsPage.form\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/display/ResultsPage.form\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/display/ResultsPage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/display/ResultsPage.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/display/RouteAlgo.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/display/RouteAlgo.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2A7g7QPJttaCpx9VXPRHw4YpYJo\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH\": \"323\",\r\n    \"jdk.selected.JAVA_MODULE\": \"18\",\r\n    \"last_opened_file_path\": \"C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\",\r\n    \"settings.editor.selected.configurable\": \"preferences.keymap\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\abdul\\IdeaProjects\\TrafficSimulator\\src\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\abdul\\IdeaProjects\\TrafficSimulator\\src\\display\\images\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"18\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"TrafficSimulator\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TrafficSimulator\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"TrafficSimulator\" />\r\n      <module name=\"TrafficSimulator\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.TrafficSimulator\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"456e95b5-c548-4a89-b571-37eff9cbe07e\" name=\"Changes\" comment=\"\" />\r\n      <created>1654365874989</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1654365874989</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Mades Many changes. implemented path finding algo and replace hashmap with 2d string array\">\r\n      <created>1658530878782</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658530878782</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array\">\r\n      <created>1658530941377</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658530941377</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Mades changes to Junction added turns and tjunctions\" />\r\n    <MESSAGE value=\"Mades Many changes. implemented path finding algo and replace hashmap with 2d string array\" />\r\n    <MESSAGE value=\"Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.util.ConcurrentModificationException\" package=\"java.util\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/.idea/workspace.xml	(date 1658605959474)
+@@ -4,15 +4,30 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array">
++    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="Fixed ResultsPage, added commute time and much more">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/database/Sql.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/database/Sql.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/CellBtn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/CellBtn.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/JunctionCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/JunctionCheck.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/OptionsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/OptionsMenu.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ResultsPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ResultsPage.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/RouteAlgo.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ShortestPath.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/TrafficSimulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrafficSimulator/display/TrafficSimulator.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/database/Sql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/Sql.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/CellBtn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/CellBtn.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/JunctionCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/JunctionCheck.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/OptionsMenu.form" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/OptionsMenu.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/ResultsPage.form" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/ResultsPage.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/display/RouteAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/RouteAlgo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/RouteAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/RouteAlgo.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/ShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/ShortestPath.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/StartPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/StartPage.form" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/StartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/StartPage.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/TrafficSimulator.form" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/display/TrafficSimulator.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -37,22 +52,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "323",
+-    "jdk.selected.JAVA_MODULE": "18",
+-    "last_opened_file_path": "C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "run.code.analysis.last.selected.profile": "pProject Default",
+-    "settings.editor.selected.configurable": "preferences.keymap"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
++    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
++    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;323&quot;,
++    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\abdul\IdeaProjects\TrafficSimulator\src" />
+@@ -108,7 +123,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1658530941377</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Fixed ResultsPage, added commute time and much more">
++      <created>1658576907717</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1658576907732</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -126,7 +148,8 @@
+     <MESSAGE value="Mades changes to Junction added turns and tjunctions" />
+     <MESSAGE value="Mades Many changes. implemented path finding algo and replace hashmap with 2d string array" />
+     <MESSAGE value="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array" />
++    <MESSAGE value="Fixed ResultsPage, added commute time and much more" />
++    <option name="LAST_COMMIT_MESSAGE" value="Fixed ResultsPage, added commute time and much more" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: src/display/JunctionCheck.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package display;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.util.HashMap;\r\n\r\npublic class JunctionCheck implements ActionListener{\r\n\r\n    private final Icon junctionImg = new ImageIcon(\"src/display/images/junction.png\");\r\n    private final Icon tdownImg = new ImageIcon(\"src/display/images/tdown.png\");\r\n    private final Icon tupImg = new ImageIcon(\"src/display/images/tup.png\");\r\n    private final Icon trightImg = new ImageIcon(\"src/display/images/tright.png\");\r\n    private final Icon tleftImg = new ImageIcon(\"src/display/images/tleft.png\");\r\n    private final Icon uptoleftImg = new ImageIcon(\"src/display/images/uptoleft.png\");\r\n    private final Icon uptorightImg = new ImageIcon(\"src/display/images/uptoright.png\");\r\n    private final Icon righttodownImg = new ImageIcon(\"src/display/images/righttodown.png\");\r\n    private final Icon lefttodownImg = new ImageIcon(\"src/display/images/lefttodown.png\");\r\n    private final CellBtn[][] btns = TrafficSimulator.getBtns();\r\n\r\n    @Override\r\n    public void actionPerformed(ActionEvent e) {;\r\n        for(int i=0; i<10; i++ ) {\r\n            for(int j=0; j<20; j++) {\r\n\r\n                // checking Junctions\r\n                try {\r\n                    // junction 4way\r\n                    if (RouteAlgo.tiles_info[i][j+1] == \"-\" && RouteAlgo.tiles_info[i][j-1] == \"-\" && RouteAlgo.tiles_info[i+1][j] == \"|\" && RouteAlgo.tiles_info[i-1][j] == \"|\") {\r\n                        btns[i][j].setIcon(junctionImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"+\";\r\n\r\n                    }\r\n                    // t junction downwards\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"-\" && RouteAlgo.tiles_info[i][j-1] == \"-\" && RouteAlgo.tiles_info[i+1][j] == \"|\" && RouteAlgo.tiles_info[i-1][j] == \"x\") {\r\n                            btns[i][j].setIcon(tdownImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"T\";\r\n\r\n                    }\r\n                    // t junction upwards\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"-\" && RouteAlgo.tiles_info[i][j-1] == \"-\" && RouteAlgo.tiles_info[i+1][j] == \"x\" && RouteAlgo.tiles_info[i-1][j] == \"|\") {\r\n                        btns[i][j].setIcon(tupImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"^\";\r\n\r\n                    }\r\n                    //t junction right\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"-\" && RouteAlgo.tiles_info[i][j-1] == \"x\" && RouteAlgo.tiles_info[i+1][j] == \"|\" && RouteAlgo.tiles_info[i-1][j] == \"|\") {\r\n                        btns[i][j].setIcon(trightImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"}\";\r\n\r\n                    }\r\n                    //t junction left\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"x\" && RouteAlgo.tiles_info[i][j-1] == \"-\" && RouteAlgo.tiles_info[i+1][j] == \"|\" && RouteAlgo.tiles_info[i-1][j] == \"|\") {\r\n                        btns[i][j].setIcon(tleftImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"{\";\r\n\r\n                    }\r\n                    //up left turn\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"x\" && RouteAlgo.tiles_info[i][j-1] == \"-\" && RouteAlgo.tiles_info[i+1][j] == \"x\" && RouteAlgo.tiles_info[i-1][j] == \"|\") {\r\n                        btns[i][j].setIcon(uptoleftImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"J\";\r\n\r\n                    }\r\n                    // up right turn\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"-\" && RouteAlgo.tiles_info[i][j-1] == \"x\" && RouteAlgo.tiles_info[i+1][j] == \"x\" && RouteAlgo.tiles_info[i-1][j] == \"|\") {\r\n                        btns[i][j].setIcon(uptorightImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"L\";\r\n\r\n                    }\r\n                    //down left turn\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"x\" && RouteAlgo.tiles_info[i][j-1] == \"-\" && RouteAlgo.tiles_info[i+1][j] == \"|\" && RouteAlgo.tiles_info[i-1][j] == \"x\") {\r\n                        btns[i][j].setIcon(lefttodownImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"1\";\r\n\r\n                    }\r\n                    // down right turn\r\n                    else if (RouteAlgo.tiles_info[i][j+1] == \"-\" && RouteAlgo.tiles_info[i][j-1] == \"x\" && RouteAlgo.tiles_info[i+1][j] == \"|\" && RouteAlgo.tiles_info[i-1][j] == \"x\") {\r\n                        btns[i][j].setIcon(righttodownImg);\r\n                        RouteAlgo.tiles_info[i][j] = \"F\";\r\n                    }\r\n                }catch (Exception ignored) {}\r\n            }\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/JunctionCheck.java b/src/display/JunctionCheck.java
+--- a/src/display/JunctionCheck.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/JunctionCheck.java	(date 1658605496472)
+@@ -1,9 +1,10 @@
+ package display;
+ 
++import statistics.RouteAlgo;
++
+ import javax.swing.*;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
+-import java.util.HashMap;
+ 
+ public class JunctionCheck implements ActionListener{
+ 
+Index: src/display/OptionsMenu.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"display.OptionsMenu\">\r\n  <grid id=\"27dc6\" binding=\"optionsMenu\" layout-manager=\"FormLayout\">\r\n    <rowspec value=\"center:d:grow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):grow\"/>\r\n    <colspec value=\"fill:d:grow\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"851\" height=\"436\"/>\r\n    </constraints>\r\n    <properties>\r\n      <background color=\"-1\"/>\r\n      <foreground color=\"-16777216\"/>\r\n    </properties>\r\n    <border type=\"none\"/>\r\n    <children>\r\n      <component id=\"83d2f\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"2\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\" defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <font name=\"Broadway\" size=\"48\"/>\r\n          <foreground color=\"-16777216\"/>\r\n          <text value=\"⚙️ SIMULATION SETTINGS\"/>\r\n        </properties>\r\n      </component>\r\n      <grid id=\"ba60a\" layout-manager=\"FlowLayout\" hgap=\"5\" vgap=\"5\" flow-align=\"1\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms/>\r\n        </constraints>\r\n        <properties>\r\n          <autoscrolls value=\"false\"/>\r\n          <background color=\"-1\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <component id=\"8c6e4\" class=\"javax.swing.JLabel\" binding=\"rL\">\r\n            <constraints/>\r\n            <properties>\r\n              <font name=\"Century Gothic\" size=\"16\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <text value=\"Road Length\"/>\r\n            </properties>\r\n          </component>\r\n          <hspacer id=\"f93ce\">\r\n            <constraints/>\r\n          </hspacer>\r\n          <component id=\"47328\" class=\"javax.swing.JTextField\" binding=\"noOfVehicles\">\r\n            <constraints/>\r\n            <properties>\r\n              <minimumSize width=\"100\" height=\"40\"/>\r\n              <opaque value=\"true\"/>\r\n              <preferredSize width=\"100\" height=\"40\"/>\r\n            </properties>\r\n          </component>\r\n        </children>\r\n      </grid>\r\n      <grid id=\"31028\" layout-manager=\"FlowLayout\" hgap=\"5\" vgap=\"5\" flow-align=\"1\">\r\n        <constraints>\r\n          <grid row=\"4\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms/>\r\n        </constraints>\r\n        <properties>\r\n          <autoscrolls value=\"false\"/>\r\n          <background color=\"-1\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <component id=\"c5bc5\" class=\"javax.swing.JLabel\">\r\n            <constraints/>\r\n            <properties>\r\n              <font name=\"Century Gothic\" size=\"16\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <text value=\"Speed Limit               \"/>\r\n            </properties>\r\n          </component>\r\n          <hspacer id=\"e8772\">\r\n            <constraints/>\r\n          </hspacer>\r\n          <component id=\"26efb\" class=\"javax.swing.JTextField\" binding=\"speedLimit\">\r\n            <constraints/>\r\n            <properties>\r\n              <minimumSize width=\"100\" height=\"40\"/>\r\n              <opaque value=\"true\"/>\r\n              <preferredSize width=\"100\" height=\"40\"/>\r\n            </properties>\r\n          </component>\r\n        </children>\r\n      </grid>\r\n      <grid id=\"c26f2\" layout-manager=\"FlowLayout\" hgap=\"5\" vgap=\"5\" flow-align=\"1\">\r\n        <constraints>\r\n          <grid row=\"6\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"1\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <autoscrolls value=\"false\"/>\r\n          <background color=\"-1\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <component id=\"b21ad\" class=\"javax.swing.JLabel\">\r\n            <constraints/>\r\n            <properties>\r\n              <font name=\"Century Gothic\" size=\"16\"/>\r\n              <foreground color=\"-16777216\"/>\r\n              <text value=\"Time for Simulation    \"/>\r\n            </properties>\r\n          </component>\r\n          <hspacer id=\"dff0a\">\r\n            <constraints/>\r\n          </hspacer>\r\n          <component id=\"a489d\" class=\"javax.swing.JTextField\" binding=\"time\">\r\n            <constraints/>\r\n            <properties>\r\n              <minimumSize width=\"100\" height=\"40\"/>\r\n              <opaque value=\"true\"/>\r\n              <preferredSize width=\"100\" height=\"40\"/>\r\n            </properties>\r\n          </component>\r\n        </children>\r\n      </grid>\r\n      <component id=\"f0d73\" class=\"javax.swing.JButton\" binding=\"backButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"8\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\" defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <contentAreaFilled value=\"false\"/>\r\n          <foreground color=\"-16777216\"/>\r\n          <preferredSize width=\"100\" height=\"50\"/>\r\n          <text value=\"\uD83D\uDD19 Back\"/>\r\n        </properties>\r\n      </component>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/OptionsMenu.form b/src/display/OptionsMenu.form
+--- a/src/display/OptionsMenu.form	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/OptionsMenu.form	(date 1658605959208)
+@@ -41,27 +41,7 @@
+           <background color="-1"/>
+         </properties>
+         <border type="none"/>
+-        <children>
+-          <component id="8c6e4" class="javax.swing.JLabel" binding="rL">
+-            <constraints/>
+-            <properties>
+-              <font name="Century Gothic" size="16"/>
+-              <foreground color="-16777216"/>
+-              <text value="Road Length"/>
+-            </properties>
+-          </component>
+-          <hspacer id="f93ce">
+-            <constraints/>
+-          </hspacer>
+-          <component id="47328" class="javax.swing.JTextField" binding="noOfVehicles">
+-            <constraints/>
+-            <properties>
+-              <minimumSize width="100" height="40"/>
+-              <opaque value="true"/>
+-              <preferredSize width="100" height="40"/>
+-            </properties>
+-          </component>
+-        </children>
++        <children/>
+       </grid>
+       <grid id="31028" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+         <constraints>
+@@ -93,6 +73,13 @@
+               <preferredSize width="100" height="40"/>
+             </properties>
+           </component>
++          <component id="791b4" class="javax.swing.JLabel" binding="km">
++            <constraints/>
++            <properties>
++              <foreground color="-16777216"/>
++              <text value="Km/hr"/>
++            </properties>
++          </component>
+         </children>
+       </grid>
+       <grid id="c26f2" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+@@ -105,27 +92,7 @@
+           <background color="-1"/>
+         </properties>
+         <border type="none"/>
+-        <children>
+-          <component id="b21ad" class="javax.swing.JLabel">
+-            <constraints/>
+-            <properties>
+-              <font name="Century Gothic" size="16"/>
+-              <foreground color="-16777216"/>
+-              <text value="Time for Simulation    "/>
+-            </properties>
+-          </component>
+-          <hspacer id="dff0a">
+-            <constraints/>
+-          </hspacer>
+-          <component id="a489d" class="javax.swing.JTextField" binding="time">
+-            <constraints/>
+-            <properties>
+-              <minimumSize width="100" height="40"/>
+-              <opaque value="true"/>
+-              <preferredSize width="100" height="40"/>
+-            </properties>
+-          </component>
+-        </children>
++        <children/>
+       </grid>
+       <component id="f0d73" class="javax.swing.JButton" binding="backButton" default-binding="true">
+         <constraints>
+Index: src/display/ResultsPage.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"display.ResultsPage\">\r\n  <grid id=\"27dc6\" binding=\"resultsMainPage\" layout-manager=\"FormLayout\">\r\n    <rowspec value=\"center:344px:noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:d:grow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"center:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:d:grow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <rowspec value=\"top:4dlu:noGrow\"/>\r\n    <rowspec value=\"center:max(d;4px):noGrow\"/>\r\n    <colspec value=\"fill:d:grow\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"924\" height=\"582\"/>\r\n    </constraints>\r\n    <properties>\r\n      <background color=\"-1\"/>\r\n      <foreground color=\"-16777216\"/>\r\n    </properties>\r\n    <border type=\"none\"/>\r\n    <children>\r\n      <component id=\"c1180\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"2\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms top=\"30\" left=\"0\" bottom=\"0\" right=\"0\" defaultalign-horz=\"false\" defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-1\"/>\r\n          <font name=\"Broadway\" size=\"48\"/>\r\n          <foreground color=\"-16777216\"/>\r\n          <text value=\"\uD83D\uDE97  SIMULATION RESULTS\"/>\r\n        </properties>\r\n      </component>\r\n      <grid id=\"afa39\" binding=\"VLabels\" layout-manager=\"FormLayout\">\r\n        <rowspec value=\"center:d:grow\"/>\r\n        <constraints>\r\n          <grid row=\"6\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"1\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <autoscrolls value=\"false\"/>\r\n          <background color=\"-1\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children/>\r\n      </grid>\r\n      <component id=\"3234f\" class=\"javax.swing.JButton\" binding=\"backToMain\">\r\n        <constraints>\r\n          <grid row=\"14\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <borderPainted value=\"true\"/>\r\n          <contentAreaFilled value=\"false\"/>\r\n          <focusable value=\"false\"/>\r\n          <foreground color=\"-16777216\"/>\r\n          <opaque value=\"false\"/>\r\n          <preferredSize width=\"180\" height=\"50\"/>\r\n          <text value=\"\uD83D\uDD19 Back To Main Page\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"df4c\" class=\"javax.swing.JLabel\" binding=\"shotDist\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <text value=\"\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"b33f0\" class=\"javax.swing.JLabel\" binding=\"longDist\">\r\n        <constraints>\r\n          <grid row=\"4\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <text value=\"\"/>\r\n        </properties>\r\n      </component>\r\n      <vspacer id=\"2427a\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"6\" hsize-policy=\"1\" anchor=\"0\" fill=\"2\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-vert=\"false\"/>\r\n        </constraints>\r\n      </vspacer>\r\n      <component id=\"99f26\" class=\"javax.swing.JLabel\" binding=\"time\">\r\n        <constraints>\r\n          <grid row=\"8\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <forms defaultalign-horz=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <text value=\"Label\"/>\r\n        </properties>\r\n      </component>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/ResultsPage.form b/src/display/ResultsPage.form
+--- a/src/display/ResultsPage.form	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/ResultsPage.form	(date 1658605496488)
+@@ -96,7 +96,7 @@
+           <forms defaultalign-horz="false"/>
+         </constraints>
+         <properties>
+-          <text value="Label"/>
++          <text value=""/>
+         </properties>
+       </component>
+     </children>
+Index: src/display/ResultsPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package display;\r\n\r\nimport javax.swing.*;\r\n\r\npublic class ResultsPage extends JFrame {\r\n    private JPanel resultsMainPage;\r\n    private JButton backToMain;\r\n    private JPanel VLabels;\r\n    private JLabel shotDist;\r\n    private JLabel longDist;\r\n    private JLabel time;\r\n    private JTextArea textArea1;\r\n\r\n    public ResultsPage(int width, int height) {\r\n\r\n        this.setTitle(\"Welcome\");\r\n        this.setSize(width, height);\r\n        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);\r\n        this.setContentPane(resultsMainPage);\r\n        this.setVisible(false);\r\n\r\n    }\r\n\r\n    public JButton getBackToMain() {\r\n        return backToMain;\r\n    }\r\n\r\n    public void Text(float[] data) {\r\n        shotDist.setText(\"Shortest Distance is \" + data[0]);\r\n        longDist.setText(\"Longest Distance is \" + data[1]);\r\n        time.setText(\"Average Commute Time is \" + (data[2]) + \" Seconds\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/display/ResultsPage.java b/src/display/ResultsPage.java
+--- a/src/display/ResultsPage.java	(revision 46a422f33fce061f23cf2feb04120b9483df8429)
++++ b/src/display/ResultsPage.java	(date 1658605683622)
+@@ -9,7 +9,6 @@
+     private JLabel shotDist;
+     private JLabel longDist;
+     private JLabel time;
+-    private JTextArea textArea1;
+ 
+     public ResultsPage(int width, int height) {
+ 
+@@ -26,8 +25,8 @@
+     }
+ 
+     public void Text(float[] data) {
+-        shotDist.setText("Shortest Distance is " + data[0]);
+-        longDist.setText("Longest Distance is " + data[1]);
++        shotDist.setText("Shortest Distance is " + data[0] + " km");
++        longDist.setText("Longest Distance is " + data[1] + " km");
+         time.setText("Average Commute Time is " + (data[2]) + " Seconds");
+     }
+ }
+\ No newline at end of file

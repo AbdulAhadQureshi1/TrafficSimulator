@@ -4,7 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="" />
+    <list default="true" id="456e95b5-c548-4a89-b571-37eff9cbe07e" name="Changes" comment="smaller changes">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/display.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/display.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/display1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/display1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_29.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_291.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_291.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficSimulator-main.eml" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficSimulator-main.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficSimulator-main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficSimulator-main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficSimulator-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficSimulator-master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficSimulator.eml" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficSimulator.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficSimulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficSimulator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/RouteAlgo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrafficSimulator/display/ShortestPath.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/Sql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/Sql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/CellBtn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/JunctionCheck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/LoginPage.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/LoginPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/OptionsMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/RegisterPage.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/RegisterPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/ResultsPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/RouteAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/RouteAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/ShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/ShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/StartPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/StartPage.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/StartPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/TrafficSimulator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/RoadCollection.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/crossroad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/gps.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/junction.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/lefttodown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/righttodown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/roadHorizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/roadVertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/tdown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/tleft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/traffic-jam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/tright.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/tup.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/uptoleft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/images/uptoright.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/jgoodies-common-1.8.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display/jgoodies-forms-1.8.0.jar" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,22 +88,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "false",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "323",
-    "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;false&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;323&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/arsal/OneDrive/Desktop/----/projects/TrafficSimulator-master&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\abdul\IdeaProjects\TrafficSimulator\src" />
@@ -117,7 +177,8 @@
     <MESSAGE value="Mades changes to Junction added turns and tjunctions" />
     <MESSAGE value="Mades Many changes. implemented path finding algo and replace hashmap with 2d string array" />
     <MESSAGE value="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mades Many changes. implemented path finding algo and replaced hashmap with 2d string array" />
+    <MESSAGE value="smaller changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="smaller changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
